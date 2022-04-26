@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+table {
+	width: 800px;
+	border: 2px solid rgb(128, 128, 255);
+	border-collapse: collapse;
+	box-align: center;
+}
+
+th {
+	background-color: rgb(247, 253, 11);
+	border: 2px solid rgb(255, 255, 255);
+	border-collapse: collapse;
+}
+
+td {
+	border: 2px solid rgb(255, 255, 255);
+	border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+	background-color: rgb(255, 255, 0);
+}
+
+tr:nth-child(odd) {
+	background-color: rgb(255, 255, 251);
+}
+
+form {
+	background-color: rgba(145,232,236,0.6);
+	width: 100%;
+	margin-top: 15px;
+	margin-left: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+div.card-header
+{
+	background-color: rgb(196, 242, 244);
+}
+
+header.jumbotron
+{
+	background-color: rgba(145,232,236,0.6);	
+}
+
+body {
+	background-image: url("https://www.trinitynewport.org/wp-content/uploads/2019/11/background-faded-1080x639.png");
+}
+
+
