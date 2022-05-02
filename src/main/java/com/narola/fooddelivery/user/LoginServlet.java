@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	static String referer=null;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("Hiii");
 		referer=request.getHeader("referer");
 		getServletContext().getRequestDispatcher(URLConstantAdmin.LOGIN_JSP).forward(request, response);
 
