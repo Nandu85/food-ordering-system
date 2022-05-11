@@ -141,7 +141,7 @@ public class OrderDAO {
 		return id;
 	}
 	
-	public static List<Order> getAllOrdersSorted(List<Order> orders,String field) {
+	public static List<Order> getAllOrdersSorted(List<Order> orders,final String field) {
 		
 		Collections.sort(orders, new Comparator<Order>() {
 

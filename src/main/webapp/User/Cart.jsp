@@ -138,7 +138,7 @@
 			
 			</div>
 			
-			
+			<input type="hidden" id="address" value="<%= request.getRequestURL().toString()%>">
 		</div>
 	</div>
 
@@ -149,7 +149,7 @@
 			value = isNaN(value) ? 0 : value;
 			value++;
 			input.value = value;
-			window.location.href = "http://localhost:8080/FoodOrderingSystem/UpdateItem?dishId="
+			window.location.href = document.getElementById("address").value.slice(0,-13)+"AddtoCart?dishId="
 				+ input.id + "&qty=" + input.value;
 		}
 
@@ -160,7 +160,7 @@
 				value = isNaN(value) ? 0 : value;
 				value--;
 				input.value = value;
-				window.location.href = "http://localhost:8080/FoodOrderingSystem/UpdateItem?dishId="
+				window.location.href = document.getElementById("address").value.slice(0,-13)+"AddtoCart?dishId="
 					+ input.id + "&qty=" + input.value;
 			}
 		}

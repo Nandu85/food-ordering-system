@@ -7,12 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
-import com.mysql.cj.jdbc.Blob;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
-import java.util.Base64;
 
 public class SubCategoryDAO {
 
@@ -99,8 +98,8 @@ public class SubCategoryDAO {
 				cat.setCategoryId(rs.getInt("subcategoryId"));
 				cat.setCategoryName(rs.getString("subcatName"));
 				cat.setCategory(CategoryDAO.getCategoryById(rs.getInt("SuperCategory")));
-				Blob blob=(Blob) rs.getBlob("Image");
-				String x=Base64.getEncoder().encodeToString(blob.getBytes(1, (int)blob.length()));
+				
+				String x=Base64.getEncoder().encodeToString(rs.getBlob("Image").getBytes(1, (int)rs.getBlob("Image").length()));
 				cat.setImageAsBase64(x);
 				categories.add(cat);
 			}
@@ -166,8 +165,8 @@ public class SubCategoryDAO {
 				cat.setCategoryId(rs.getInt("subcategoryId"));
 				cat.setCategoryName(rs.getString("subcatName"));
 				cat.setCategory(CategoryDAO.getCategoryById(rs.getInt("SuperCategory")));
-				Blob blob=(Blob) rs.getBlob("Image");
-				String x=Base64.getEncoder().encodeToString(blob.getBytes(1, (int)blob.length()));
+				
+				String x=Base64.getEncoder().encodeToString(rs.getBlob("Image").getBytes(1, (int)rs.getBlob("Image").length()));
 				cat.setImageAsBase64(x);
 				
 			}

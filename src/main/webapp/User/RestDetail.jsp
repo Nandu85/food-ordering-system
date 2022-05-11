@@ -217,6 +217,7 @@
 			<br>
 			<br>
 			<br>
+			<input type="hidden" id="address" value="<%= request.getRequestURL().toString()%>">
 		</div>
 	</div>
 
@@ -230,7 +231,7 @@
 			value = isNaN(value) ? 0 : value;
 			value++;
 			input.value = value;
-			window.location.href = "http://localhost:8080/FoodOrderingSystem/AddtoCart?dishId="
+			window.location.href = document.getElementById("address").value.slice(0,-19)+"AddtoCart?dishId="
 				+ input.id + "&qty=" + input.value;
 		}
 
@@ -241,7 +242,7 @@
 				value = isNaN(value) ? 0 : value;
 				value--;
 				input.value = value;
-				window.location.href = "http://localhost:8080/FoodOrderingSystem/AddtoCart?dishId="
+				window.location.href = document.getElementById("address").value.slice(0,-19)+"AddtoCart?dishId="
 					+ input.id + "&qty=" + input.value;
 			}
 		}
@@ -255,8 +256,9 @@
 				
 				var qty = document.getElementById("dishqty" + e.value);
 				var dishid = e.value;
-				window.location.href = "http://localhost:8080/FoodOrderingSystem/AddtoCart?dishId="
-						+ e.value + "&qty=1";
+				window.location.href = document.getElementById("address").value.slice(0,-19)+"AddtoCart?dishId="
+						+ e.value + "&qty=1"; 
+				console.log(document.getElementById("address").value.slice(0,-19)+"AddtoCart?dishId=");
 			}
 			
 
