@@ -1,8 +1,8 @@
 <%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.narola.fooddelivery.dishes.DishDAOMYSQL"%>
-<%@page import="com.narola.fooddelivery.dishes.Dish"%>
+<%@page import="com.narola.fooddelivery.dishes.dao.DishDAOMYSQL"%>
+<%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
 
 <!DOCTYPE html>
 <html>

@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*"%>
-<%@page import="com.narola.fooddelivery.dishes.Dish"%>
+<%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
 <%@page import="com.narola.fooddelivery.restaurants.Restaurant"%>
 <%@page import="com.narola.fooddelivery.Cart.Cart"%>
 <%@page import="com.narola.fooddelivery.URLConstantUser"%>

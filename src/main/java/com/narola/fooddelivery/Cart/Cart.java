@@ -3,7 +3,7 @@ package com.narola.fooddelivery.Cart;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.narola.fooddelivery.dishes.Dish;
+import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.restaurants.Restaurant;
 import com.narola.fooddelivery.user.User;
 

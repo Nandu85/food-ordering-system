@@ -1,9 +1,10 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.dao;
 
 import java.io.IOException;
 import java.util.List;
 
 import com.narola.fooddelivery.DatabaseException;
+import com.narola.fooddelivery.dishes.model.Dish;
 
 public interface IDishDAO {
 	

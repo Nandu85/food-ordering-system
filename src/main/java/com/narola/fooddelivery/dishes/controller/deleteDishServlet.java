@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.controller;
 
 import java.io.IOException;
 
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantOfServlet;
+import com.narola.fooddelivery.dishes.service.IDishService;
+import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
 
 /**
  * Servlet implementation class deleteDish

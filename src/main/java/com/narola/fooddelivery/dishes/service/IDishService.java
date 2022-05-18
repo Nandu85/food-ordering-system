@@ -1,10 +1,12 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.service;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.narola.fooddelivery.dishes.model.Dish;
 
 public interface IDishService {
 

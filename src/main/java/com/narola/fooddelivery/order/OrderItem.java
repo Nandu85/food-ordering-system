@@ -1,6 +1,6 @@
 package com.narola.fooddelivery.order;
 
-import com.narola.fooddelivery.dishes.Dish;
+import com.narola.fooddelivery.dishes.model.Dish;
 
 public class OrderItem {
 

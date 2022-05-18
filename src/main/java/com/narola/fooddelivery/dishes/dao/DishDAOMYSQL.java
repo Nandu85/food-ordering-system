@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.dao;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +17,7 @@ import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.category.SubCategoryDAO;
+import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.restaurants.RestDAO;
 
 public class DishDAOMYSQL implements IDishDAO {

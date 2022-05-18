@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
-import com.narola.fooddelivery.dishes.Dish;
+import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.restaurants.RestDAO;
 import com.narola.fooddelivery.restaurants.Restaurant;
 

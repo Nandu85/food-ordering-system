@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +15,9 @@ import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.CategoryDAO;
 import com.narola.fooddelivery.category.SubCategoryDAO;
+import com.narola.fooddelivery.dishes.model.Dish;
+import com.narola.fooddelivery.dishes.service.IDishService;
+import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
 import com.narola.fooddelivery.restaurants.RestDAO;
 
 public class DishUpdateServlet extends HttpServlet {

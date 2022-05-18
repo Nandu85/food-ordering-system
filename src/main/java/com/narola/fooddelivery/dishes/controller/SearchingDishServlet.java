@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.category.CategoryDAO;
+import com.narola.fooddelivery.dishes.service.IDishService;
+import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
 import com.narola.fooddelivery.user.User;
 
 /**

@@ -2,7 +2,7 @@ package com.narola.fooddelivery.Cart;
 
 import java.util.ArrayList;
 
-import com.narola.fooddelivery.dishes.Dish;
+import com.narola.fooddelivery.dishes.model.Dish;
 
 public class CartItem {
 	

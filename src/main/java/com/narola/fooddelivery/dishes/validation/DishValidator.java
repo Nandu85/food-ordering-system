@@ -1,7 +1,9 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.validation;
 
 import com.narola.fooddelivery.Constant;
 import com.narola.fooddelivery.category.SubCategoryDAO;
+import com.narola.fooddelivery.dishes.DishException;
+import com.narola.fooddelivery.dishes.model.Dish;
 
 public class DishValidator {
 

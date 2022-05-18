@@ -25,7 +25,7 @@
     <description></description>
     <display-name>SearchingDish</display-name>
     <servlet-name>SearchingDishServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.dishes.SearchingDishServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.dishes.controller.SearchingDishServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchingDishServlet</servlet-name>
@@ -35,7 +35,7 @@
     <description></description>
     <display-name>DishUpdate</display-name>
     <servlet-name>DishUpdateServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.dishes.DishUpdateServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.dishes.controller.DishUpdateServlet</servlet-class>
     <multipart-config>
       <max-file-size>10485760</max-file-size>
       <max-request-size>20971520</max-request-size>
@@ -50,7 +50,7 @@
     <description></description>
     <display-name>AddDishes</display-name>
     <servlet-name>AddDishesServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.dishes.AddDishesServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.dishes.controller.AddDishesServlet</servlet-class>
     <multipart-config>
       <max-file-size>10485760</max-file-size>
       <max-request-size>20971520</max-request-size>
@@ -65,7 +65,7 @@
     <description></description>
     <display-name>deleteDish</display-name>
     <servlet-name>deleteDishServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.dishes.deleteDishServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.dishes.controller.deleteDishServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>deleteDishServlet</servlet-name>
@@ -144,14 +144,9 @@
   <filter>
     <display-name>validateDish</display-name>
     <filter-name>validateDish_filter</filter-name>
-    <filter-class>com.narola.fooddelivery.dishes.validateDish_filter</filter-class>
+    <filter-class>com.narola.fooddelivery.dishes.validation.validateDish_filter</filter-class>
   </filter>
-  <filter>
-    <description></description>
-    <display-name>UpdateFilter</display-name>
-    <filter-name>UpdateFilter</filter-name>
-    <filter-class>com.narola.fooddelivery.dishes.UpdateFilter</filter-class>
-  </filter>
+  
   <filter-mapping>
     <filter-name>validateDish_filter</filter-name>
     <servlet-name>AddDishesServlet</servlet-name>

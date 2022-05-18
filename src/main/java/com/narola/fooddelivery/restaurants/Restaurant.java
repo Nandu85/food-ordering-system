@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.dishes.Dish;
+import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.user.User;
 import com.narola.fooddelivery.user.UserDAO;

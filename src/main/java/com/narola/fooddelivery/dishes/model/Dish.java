@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.dishes;
+package com.narola.fooddelivery.dishes.model;
 
 import java.io.InputStream;
 
