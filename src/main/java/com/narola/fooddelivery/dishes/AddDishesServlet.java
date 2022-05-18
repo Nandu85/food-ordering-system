@@ -22,7 +22,7 @@ public class AddDishesServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("Restaurants", RestDAO.getAllRestaurants());
-//		req.setAttribute("categories", CategoryDAO.getAllCategories());
+
 		req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());;
 		getServletContext().getRequestDispatcher(URLConstantAdmin.ADDDISH_JSP).forward(req, resp);
 		

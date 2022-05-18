@@ -23,7 +23,7 @@ public class DatabaseServlet extends HttpServlet {
 			DBConnection.getInstance().setUsername(username);
 			DBConnection.getInstance().setPassword(password);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

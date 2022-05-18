@@ -29,43 +29,21 @@ public class SearchingDishServlet extends HttpServlet {
 		String category = request.getParameter("category");
 		String dtype = request.getParameter("DishType");
 		try {
-			if (isFilter != null && Boolean.parseBoolean(isFilter)) {
-				searchDish(request, response, dname, category, dtype);
-			} else {
-				searchDish(request, response);
-			}
+			
+			IDishService dishService = new DishServiceImpl();
+			request=dishService.searchDish(request, response, dname, category, dtype, isFilter);
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(URLConstantAdmin.SEARCHDISH_JSP);
+			dispatcher.forward(request, response);
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-	}
-
-	public void searchDish(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		searchDish(request, response, null, null, null);
-	}
-
-	public void searchDish(HttpServletRequest request, HttpServletResponse response, String dname, String categoryId,
-			String dtype1) throws ServletException, IOException {
-		List<Dish> dl = null;
-		if (dname == null && categoryId == null && dtype1 == null) {
-			dl = DAOFactory.getInstance().getDishDAO().getAllDish();
-		} else {
-			dl = DAOFactory.getInstance().getDishDAO().getAllDish(dname, categoryId, dtype1);
-		}
-		request.setAttribute("dishList", dl);
-		request.setAttribute("categories", CategoryDAO.getAllCategories());
-		
-		User sessionUser=(User)request.getSession().getAttribute("user");
-		if(sessionUser.getAdmin()==3 && sessionUser.getRestaurantId()!=0) {
-			request.setAttribute("dishList", sessionUser.getRestaurant().getMenu());
-		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(URLConstantAdmin.SEARCHDISH_JSP);
-		dispatcher.forward(request, response);
 	}
 
 }

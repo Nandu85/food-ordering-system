@@ -30,52 +30,33 @@ public class DishUpdateServlet extends HttpServlet {
 			String dname = request.getParameter("DishName");
 			String price = request.getParameter("Price");
 			String ingr = request.getParameter("ingrediant");
-
-			Part photopart = request.getPart("DishPic");
-//			if(photopart.getSize()<=0) {
-//				photopart=request.getPart("DishPic1");
-//			}
-			System.out.println(photopart.getContentType());
-			System.out.println(photopart.getName());
-			System.out.println(photopart.getSize());
-			System.out.println(photopart.getSubmittedFileName());
-
 			String category = request.getParameter("category");
 			String dtype = request.getParameter("DishType");
-			InputStream file;
+			String restaurantID = request.getParameter("restaurant");
 
-//			if(photopart.getSize()<=0)
-//				file=DishDAO.DishFromId(Integer.parseInt(did)).getPhoto();
-//			else
-			file = photopart.getInputStream();
+			Dish dish = new Dish();
 
-			Dish dish = DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(did)); // new Dish();
 			dish.setDishId(Integer.parseInt(did));
 			dish.setDishName(dname);
 			dish.setPrice(Integer.parseInt(price));
 			dish.setIngrident(ingr);
-			if (photopart.getSize() > 0)
-				dish.setPhoto(file);
 
-			dish.setSubCategory(SubCategoryDAO.getSubCategoryById(Integer.parseInt(category)));
-			
-			dish.setCategoryId(SubCategoryDAO.getSubCategoryById(Integer.parseInt(category)).getCategory().getCategoryId());
+			dish.setSubcategoryId(Integer.parseInt(category));
+
 			dish.setDishtype(Integer.parseInt(dtype));
-			dish.setRestId(Integer.parseInt(request.getParameter("restaurant")));
+			dish.setRestId(Integer.parseInt(restaurantID));
 
-			DishValidator.validate(dish);
-
-			DAOFactory.getInstance().getDishDAO().updateDish(dish);
+			IDishService dishService = new DishServiceImpl();
+			dishService.updateDish(dish, request);
 
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHDISH_WITH_NO_FILTER);
 
 		} catch (Exception e2) {
-			System.out.println(e2);
+
 			e2.printStackTrace();
 			request.setAttribute("Restaurants", RestDAO.getAllRestaurants());
-			request.setAttribute("Dish", DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(request.getParameter("DishId"))));
-			// request.setAttribute("categoryOfDish",
-			// DishDAO.CategoryFromId(DishDAO.DishFromId(Integer.parseInt(request.getParameter("DishId"))).getCategoryId()));
+			request.setAttribute("Dish",
+					DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(request.getParameter("DishId"))));
 			request.setAttribute("categories", DAOFactory.getInstance().getDishDAO().getCategories());
 			request.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
 
@@ -93,7 +74,8 @@ public class DishUpdateServlet extends HttpServlet {
 		req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
 
 		req.setAttribute("categories", CategoryDAO.getAllCategories());
-		req.setAttribute("Dish", DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(req.getParameter("DishId"))));
+		req.setAttribute("Dish",
+				DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(req.getParameter("DishId"))));
 		// req.setAttribute("categoryOfDish",
 		// DishDAO.CategoryFromId(DishDAO.DishFromId(Integer.parseInt(req.getParameter("DishId"))).getCategoryId()));
 		getServletContext().getRequestDispatcher(str).forward(req, resp);
