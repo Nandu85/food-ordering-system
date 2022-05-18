@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.category.CategoryDAO;
 import com.narola.fooddelivery.category.SubCategoryDAO;
-import com.narola.fooddelivery.dishes.DishDAO;
+import com.narola.fooddelivery.dishes.DishDAOMYSQL;
 
 /**
  * Servlet implementation class DashboardUser_servlet

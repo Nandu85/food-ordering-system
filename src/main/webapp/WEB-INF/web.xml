@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>FoodOrderingSystem</display-name>
+  <context-param>
+    <param-name>DB-IN-USE</param-name>
+    <param-value>MYSQL</param-value>
+  </context-param>
+  <context-param>
+    <param-name>MYSQL_dbname</param-name>
+    <param-value>foodorderingsystem</param-value>
+  </context-param>
+  <context-param>
+    <param-name>MYSQL_dburl</param-name>
+    <param-value>jdbc:mysql://localhost:3306/</param-value>
+  </context-param>
+  <context-param>
+    <param-name>MYSQL_username</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>MYSQL_password</param-name>
+    <param-value>123456</param-value>
+  </context-param>
   <servlet>
     <description></description>
     <display-name>SearchingDish</display-name>
@@ -395,5 +415,16 @@
   <servlet-mapping>
     <servlet-name>AddRatingServlet</servlet-name>
     <url-pattern>/AddRating</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DatabaseServlet</display-name>
+    <servlet-name>DatabaseServlet</servlet-name>
+    <load-on-startup>1</load-on-startup>
+    <servlet-class>com.narola.fooddelivery.DatabaseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DatabaseServlet</servlet-name>
+    <url-pattern>/DatabaseServlet</url-pattern>
   </servlet-mapping>
 </web-app>

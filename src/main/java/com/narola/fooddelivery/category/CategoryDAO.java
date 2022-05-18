@@ -19,7 +19,7 @@ public class CategoryDAO {
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
-			con = DBConnection.getConnection();
+			con = DBConnection.getInstance().getConnection();
 			ps = con.prepareStatement("INSERT INTO category\r\n"
 					+ "(`CategoryName`, `Popularity`)\r\n" + "VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, name);
@@ -45,7 +45,7 @@ public class CategoryDAO {
 	}
 
 	public static List<Category> getAllCategories() throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		List<Category> categories = null;
@@ -74,7 +74,7 @@ public class CategoryDAO {
 	}
 
 	public static Category getCategoryById(int Id) throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps=null;
 		Category cat = null;
@@ -102,7 +102,7 @@ public class CategoryDAO {
 
 	public static Category UpdateCategory(Category cat) throws DatabaseException  {
 
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;;
 		ResultSet resultSet=null;
 		try {
@@ -129,7 +129,7 @@ public class CategoryDAO {
 	}
 
 	public static Category deleteCategoryById(int Id) throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		Category cat = getCategoryById(Id);
 		PreparedStatement ps = null;
@@ -149,7 +149,7 @@ public class CategoryDAO {
 	}
 
 	public static List<Category> getPopularCategories() throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		List<Category> categories = null;

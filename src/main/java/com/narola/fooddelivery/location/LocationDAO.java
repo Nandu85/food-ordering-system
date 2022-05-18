@@ -16,7 +16,7 @@ public class LocationDAO {
 
 	public static Location addLocation(Location location) throws DatabaseException{
 		if(getLocationId(location)==0) {
-			Connection con = DBConnection.getConnection();
+			Connection con = DBConnection.getInstance().getConnection();
 			PreparedStatement ps=null;
 			ResultSet resultSet=null;
 			try {
@@ -52,7 +52,7 @@ public class LocationDAO {
 	}
 	
 	public static Location setUserLocation(Location location) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		
@@ -78,7 +78,7 @@ public class LocationDAO {
 	
 	
 	public static Location UpdateLocation(Location location) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		
@@ -110,7 +110,7 @@ public class LocationDAO {
 	}
 	
 	public static int getLocationId(Location location) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -142,7 +142,7 @@ public class LocationDAO {
 	
 	public static Location getLocationFromId(int id) throws DatabaseException{
 		Location location = new Location();
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -178,7 +178,7 @@ public class LocationDAO {
 	public static List<String> getAreas() throws DatabaseException{
 		List<String> area = null;
 		
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -204,7 +204,7 @@ public class LocationDAO {
 	
 	public static List<Location> getLocationFromuserId(int id) throws DatabaseException{
 		
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		List<Location> locations=null;

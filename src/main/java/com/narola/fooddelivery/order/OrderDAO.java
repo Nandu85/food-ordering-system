@@ -23,7 +23,7 @@ import com.narola.fooddelivery.user.UserDAO;
 public class OrderDAO {
 
 	public static Order PlaceOrder(Order order, Cart cart) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		
 		try {
 			con.setAutoCommit(false);
@@ -61,7 +61,7 @@ public class OrderDAO {
 
 	public static Order AddOrder(Order order, Connection con) {
 		if (con == null) {
-			con = DBConnection.getConnection();
+			con = DBConnection.getInstance().getConnection();
 		}
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -93,7 +93,7 @@ public class OrderDAO {
 	}
 
 	public static Order SetRazorpayId(Order order) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		try {
 			ps = con.prepareStatement("UPDATE `foodorderingsystem`.`order`\r\n" + "SET `RazorpayOrderId` = ?\r\n"
@@ -117,7 +117,7 @@ public class OrderDAO {
 
 	public static String getRazorpayOrderId(Order order) {
 		String id = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -175,7 +175,7 @@ public class OrderDAO {
 
 	public static Order getOrderFromId(int id) {
 		Order order = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -211,7 +211,7 @@ public class OrderDAO {
 	
 	public static Order getOrderFromRazorpayId(String id) {
 		Order order = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -247,7 +247,7 @@ public class OrderDAO {
 	
 	
 	public static Order SetTransaction(Order order) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		try {
 			ps = con.prepareStatement("UPDATE `order`\r\n" + "SET `TransactionId` = ?\r\n" + "WHERE `OrderId` = ?");
@@ -270,7 +270,7 @@ public class OrderDAO {
 
 	public static List<Order> getOrderofUser(int userId) {
 		List<Order> orders = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 
@@ -309,7 +309,7 @@ public class OrderDAO {
 
 	public static List<Order> getAllOrders() {
 		List<Order> orders = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -344,7 +344,7 @@ public class OrderDAO {
 	}
 
 	public static void changeOrderStatus(int oId, int status) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 
 		try {
@@ -365,7 +365,7 @@ public class OrderDAO {
 	}
 	
 	public static List<Order> getOrdersDatewise(Timestamp start, Timestamp end,String status) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs=null;
 		List<Order> orders=null;

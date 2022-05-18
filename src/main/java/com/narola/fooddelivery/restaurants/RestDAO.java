@@ -16,7 +16,7 @@ import com.narola.fooddelivery.location.LocationDAO;
 public class RestDAO {
 
 	public static Restaurant addRestaurant(Restaurant restaurant) throws DatabaseException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -53,7 +53,7 @@ public class RestDAO {
 	 */
 	public static List<Restaurant> searchRestaurantFromName(String RestaurantName) throws DatabaseException {
 		List<Restaurant> restaurant = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -90,7 +90,7 @@ public class RestDAO {
 		List<Restaurant> restaurant = null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		try {
 			ps=con.prepareStatement("SELECT * FROM restaurants where Location IN(SELECT LocId FROM location_restaurants where Area=?)");
 			ps.setString(1, Area);
@@ -124,7 +124,7 @@ public class RestDAO {
 		List<Restaurant> restaurant = null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		try {
 			ps=con.prepareStatement("SELECT * FROM restaurants");
 			resultSet = ps.executeQuery();
@@ -155,7 +155,7 @@ public class RestDAO {
 
 	public static Restaurant getRestaurantFromId(int id) throws DatabaseException {
 		Restaurant restaurant = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -185,7 +185,7 @@ public class RestDAO {
 	}
 
 	public static Restaurant updateRestaurant(Restaurant restaurant) throws DatabaseException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -213,7 +213,7 @@ public class RestDAO {
 	}
 
 	public static Restaurant setRestaurantAdmin(Restaurant restaurant) throws DatabaseException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -253,7 +253,7 @@ public class RestDAO {
 	}
 
 	public static List<String> getRestaurantCategories(int RestId) throws DatabaseException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		List<String> catList = null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -281,7 +281,7 @@ public class RestDAO {
 //		Restaurant restaurant = null;
 //		PreparedStatement ps=null;
 //		ResultSet resultSet=null;
-//		Connection con = DBConnection.getConnection();
+//		Connection con = DBConnection.getInstance().getConnection();
 //		try {
 //			ps=con.prepareStatement("SELECT * FROM restaurants where email=?");
 //			ps.setString(1, email);
@@ -309,7 +309,7 @@ public class RestDAO {
 
 	public static Restaurant getRestaurantFromUserId(int id) throws DatabaseException {
 		Restaurant restaurant = new Restaurant();
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -344,7 +344,7 @@ public class RestDAO {
 		List<Restaurant> restaurant = null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		try {
 			ps=con.prepareStatement("SELECT * FROM restaurants where restid IN(select Restaurant from dishes "
 					+ "where SubCategory=?) and Disabled=0");
@@ -379,7 +379,7 @@ public class RestDAO {
 		Timestamp timestamp=null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		
 		try {
 			ps=con.prepareStatement("SELECT * FROM restaurants where restid=?");

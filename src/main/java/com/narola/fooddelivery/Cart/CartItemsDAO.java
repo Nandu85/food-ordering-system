@@ -9,10 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
-import com.narola.fooddelivery.dishes.DishDAO;
-import com.narola.fooddelivery.restaurants.RestDAO;
 
 public class CartItemsDAO {
 
@@ -20,7 +19,7 @@ public class CartItemsDAO {
 		if (item.getDish().getRestId() == item.getCart().getRestaurant().getRestId()) {
 			int id = getIdFromItem(item);
 			if (id == 0) {
-				Connection con = DBConnection.getConnection();
+				Connection con = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = null;
 				ResultSet resultSet = null;
 				try {
@@ -57,7 +56,7 @@ public class CartItemsDAO {
 	}
 
 	public static CartItem updateItem(CartItem item) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -81,7 +80,7 @@ public class CartItemsDAO {
 	}
 
 	public static CartItem removeItem(CartItem item) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -100,7 +99,7 @@ public class CartItemsDAO {
 	}
 
 	public static CartItem getItemFromId(int id) throws IOException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		CartItem item = null;
@@ -112,7 +111,7 @@ public class CartItemsDAO {
 				item = new CartItem();
 				item.setItemId(id);
 				item.setCart(CartDAO.GetCartfromId(resultSet.getInt("CartId")));
-				item.setDish(DishDAO.DishFromId(resultSet.getInt("DishId")));
+				item.setDish(DAOFactory.getInstance().getDishDAO().DishFromId(resultSet.getInt("DishId")));
 				item.setQty(resultSet.getInt("Qty"));
 			}
 		} catch (SQLException e) {
@@ -126,7 +125,7 @@ public class CartItemsDAO {
 	}
 
 	public static List<CartItem> getItemsofCart(int cartId) throws IOException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		List<CartItem> items = null;
@@ -139,7 +138,7 @@ public class CartItemsDAO {
 				CartItem item = new CartItem();
 				item.setItemId(resultSet.getInt("Itemid"));
 				item.setCart(CartDAO.GetCartfromId(resultSet.getInt("CartId")));
-				item.setDish(DishDAO.DishFromId(resultSet.getInt("DishId")));
+				item.setDish(DAOFactory.getInstance().getDishDAO().DishFromId(resultSet.getInt("DishId")));
 				item.setQty(resultSet.getInt("Qty"));
 				items.add(item);
 			}
@@ -160,7 +159,7 @@ public class CartItemsDAO {
 	public static void removeCartItems(int cartId, Connection con) {
 		
 		if (con == null) {
-			con = DBConnection.getConnection();
+			con = DBConnection.getInstance().getConnection();
 		}
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -180,7 +179,7 @@ public class CartItemsDAO {
 	}
 
 	public static int getIdFromItem(CartItem item) throws IOException {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		int id = 0;
@@ -204,9 +203,10 @@ public class CartItemsDAO {
 
 	public static void main(String[] args) throws IOException {
 		CartItem item = new CartItem();
-		item.setDish(DishDAO.DishFromId(60));
+		item.setDish(DAOFactory.getInstance().getDishDAO().DishFromId(60));
 		item.setCart(CartDAO.GetCartfromId(14));
 		item.setQty(2);
+		
 		item.setItemId(getIdFromItem(item));
 		updateItem(item);
 

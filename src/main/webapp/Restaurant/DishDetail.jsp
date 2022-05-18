@@ -1,7 +1,7 @@
 <%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.narola.fooddelivery.dishes.DishDAO"%>
+<%@page import="com.narola.fooddelivery.dishes.DishDAOMYSQL"%>
 <%@page import="com.narola.fooddelivery.dishes.Dish"%>
 
 <!DOCTYPE html>
@@ -15,13 +15,12 @@
 <body>
 
 <%
-	  Dish d=DishDAO.DishFromId(Integer.parseInt(request.getParameter("DishId")));
-
+Dish d=DishDAOMYSQL.DishFromId(Integer.parseInt(request.getParameter("DishId")));
 %>
 	<div class="card">	
-		Dish Name: <label><%=d.getDishName() %></label>
+		Dish Name: <label><%=d.getDishName()%></label>
 		<br>
-		Category:<label><%=DishDAO.CategoryFromId(d.getCategoryId())%></label>
+		Category:<label><%=DishDAOMYSQL.CategoryFromId(d.getCategoryId())%></label>
 <br>
 		Price:<label><%=d.getPrice() %></label>
 <br>

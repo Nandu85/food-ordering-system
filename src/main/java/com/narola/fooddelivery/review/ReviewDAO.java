@@ -20,7 +20,7 @@ import com.narola.fooddelivery.restaurants.Restaurant;
 public class ReviewDAO {
 
 	public static Review insertReview(Review review) {
-		Connection con=DBConnection.getConnection();
+		Connection con=DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		
@@ -55,7 +55,7 @@ public class ReviewDAO {
 	
 	
 	public static Review getReviewofOrder(Order order) {
-		Connection con=DBConnection.getConnection();
+		Connection con=DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		Review review=null;
@@ -90,7 +90,7 @@ public class ReviewDAO {
 	
 	
 	public static List<Review> getReviewofRestaurant(Restaurant rest) {
-		Connection con=DBConnection.getConnection();
+		Connection con=DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		List<Review> reviews=null;

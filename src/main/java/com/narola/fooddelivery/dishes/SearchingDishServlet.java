@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.category.CategoryDAO;
 import com.narola.fooddelivery.user.User;
@@ -52,9 +53,9 @@ public class SearchingDishServlet extends HttpServlet {
 			String dtype1) throws ServletException, IOException {
 		List<Dish> dl = null;
 		if (dname == null && categoryId == null && dtype1 == null) {
-			dl = DishDAO.getAllDish();
+			dl = DAOFactory.getInstance().getDishDAO().getAllDish();
 		} else {
-			dl = DishDAO.getAllDish(dname, categoryId, dtype1);
+			dl = DAOFactory.getInstance().getDishDAO().getAllDish(dname, categoryId, dtype1);
 		}
 		request.setAttribute("dishList", dl);
 		request.setAttribute("categories", CategoryDAO.getAllCategories());

@@ -14,7 +14,7 @@ import com.narola.fooddelivery.user.UserDAO;
 public class CartDAO {
 
 	public static Cart AddCart(int restId) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		Cart cart = null;
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -42,7 +42,7 @@ public class CartDAO {
 	
 	
 	public static Cart GetCartfromId(int cartId) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		Cart cart = null;
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -71,7 +71,7 @@ public class CartDAO {
 	
 	
 	public static Cart GetCartfromUserId(int userId) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		Cart cart = null;
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -100,7 +100,7 @@ public class CartDAO {
 	
 	
 	public static Cart SetCartUser(Cart cart) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -124,7 +124,7 @@ public class CartDAO {
 	
 	
 	public static Cart SetCartTotal(Cart cart) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -151,7 +151,7 @@ public class CartDAO {
 	
 	
 	public static int getCartTotal(int cartId) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		int total=0;
@@ -175,7 +175,7 @@ public class CartDAO {
 	
 	
 	public static Cart SetRestaurantId(Cart cart) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -206,7 +206,7 @@ public class CartDAO {
 	
 	public static Cart removeCart(Cart cart,Connection con) {
 		if(con==null)
-			con = DBConnection.getConnection();
+			con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {

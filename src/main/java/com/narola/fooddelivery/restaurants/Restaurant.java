@@ -3,8 +3,8 @@ package com.narola.fooddelivery.restaurants;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.dishes.Dish;
-import com.narola.fooddelivery.dishes.DishDAO;
 import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.user.User;
 import com.narola.fooddelivery.user.UserDAO;
@@ -69,7 +69,7 @@ public class Restaurant {
 	
 	public ArrayList<Dish> getMenu() {
 		if(Menu==null)
-			return (ArrayList<Dish>) DishDAO.getRestaurantMenu(RestId);
+			return (ArrayList<Dish>) DAOFactory.getInstance().getDishDAO().getRestaurantMenu(RestId);
 		return Menu;
 	}
 	public void setMenu(ArrayList<Dish> menu) {

@@ -9,9 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
-import com.narola.fooddelivery.dishes.DishDAO;
 
 public class OrderItemDAO {
 
@@ -21,7 +21,7 @@ public class OrderItemDAO {
 
 	public static OrderItem addOrderItem(OrderItem item, Connection con) throws DatabaseException {
 		if (con == null) {
-			con = DBConnection.getConnection();
+			con = DBConnection.getInstance().getConnection();
 		}
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
@@ -53,7 +53,7 @@ public class OrderItemDAO {
 
 	public static List<OrderItem> getItemsOfOrder(int id) throws IOException {
 		List<OrderItem> items = null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
@@ -66,7 +66,7 @@ public class OrderItemDAO {
 			while (resultSet.next()) {
 				OrderItem itm = new OrderItem();
 				itm.setOrder(OrderDAO.getOrderFromId(id));
-				itm.setDish(DishDAO.DishFromId(resultSet.getInt("DishId")));
+				itm.setDish(DAOFactory.getInstance().getDishDAO().DishFromId(resultSet.getInt("DishId")));
 				itm.setQty(resultSet.getInt("Qty"));
 				itm.setOrderItemId(resultSet.getInt("OrderItemId"));
 

@@ -2,6 +2,7 @@ package com.narola.fooddelivery.dishes;
 
 import java.io.InputStream;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.category.SubCategory;
 import com.narola.fooddelivery.restaurants.RestDAO;
 import com.narola.fooddelivery.restaurants.Restaurant;
@@ -32,7 +33,7 @@ public class Dish {
 	
 	public String getCategory() {
 		if(category==null)
-			return DishDAO.CategoryFromId(categoryId);
+			return DAOFactory.getInstance().getDishDAO().CategoryFromId(categoryId);
 		return category;
 	}
 	

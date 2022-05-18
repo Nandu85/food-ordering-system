@@ -21,7 +21,7 @@ public class SubCategoryDAO {
 		PreparedStatement ps = null;
 		ResultSet resultSet = null;
 		try {
-			con = DBConnection.getConnection();
+			con = DBConnection.getInstance().getConnection();
 			ps = con.prepareStatement("INSERT INTO `subcategory`\r\n"
 					+ "(`subcatName`,`SuperCategory`)\r\n"
 					+ "VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
@@ -48,7 +48,7 @@ public class SubCategoryDAO {
 	}
 	
 	public static SubCategory UpdateSubCategory(SubCategory cat) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		
@@ -83,7 +83,7 @@ public class SubCategoryDAO {
 	
 	
 	public static List<SubCategory> getAllSubCategories() throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		List<SubCategory> categories = null;
@@ -115,7 +115,7 @@ public class SubCategoryDAO {
 	}
 	
 	public static SubCategory AddImage(InputStream image, int subCatId) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		SubCategory cat = null;
@@ -149,7 +149,7 @@ public class SubCategoryDAO {
 	
 	
 	public static SubCategory getSubCategoryById(int id) throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		SubCategory cat = null;
@@ -183,7 +183,7 @@ public class SubCategoryDAO {
 	
 	
 	public static SubCategory deleteSubCategoryById(int Id) throws DatabaseException  {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		ResultSet rs = null;
 		SubCategory cat = getSubCategoryById(Id);
 		PreparedStatement ps = null;

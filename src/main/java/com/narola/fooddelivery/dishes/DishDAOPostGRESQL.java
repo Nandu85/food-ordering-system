@@ -18,10 +18,10 @@ import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.restaurants.RestDAO;
 
-public class DishDAO {
+public class DishDAOPostGRESQL implements IDishDAO {
 
-	public static Dish addDish(Dish dish) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+	public Dish addDish(Dish dish) throws DatabaseException{
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -55,13 +55,13 @@ public class DishDAO {
 		return dish;
 	}
 	
-	public static List<Dish> getAllDish() throws DatabaseException{
+	public List<Dish> getAllDish() throws DatabaseException{
 		return getAllDish(null,null,null);
 	}
 	
 
-	public static List<Dish> getAllDish(String dname,String categoryId,String dtype1) throws DatabaseException{  
-		Connection con = DBConnection.getConnection();
+	public List<Dish> getAllDish(String dname,String categoryId,String dtype1) throws DatabaseException{  
+		Connection con = DBConnection.getInstance().getConnection();
 		List<Dish> dl=new ArrayList<>();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -137,8 +137,8 @@ public class DishDAO {
 		return dl;
 	}
 	
-	public static Dish updateDish(Dish dish) throws IOException,DatabaseException{  
-		Connection con = DBConnection.getConnection();
+	public Dish updateDish(Dish dish) throws IOException,DatabaseException{  
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		
 		try {
@@ -180,8 +180,8 @@ public class DishDAO {
 	}
 	
 	
-	public static Dish DeletedDish(Dish dish) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+	public Dish DeletedDish(Dish dish) throws DatabaseException{
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		
 		try {
@@ -202,8 +202,8 @@ public class DishDAO {
 	}
 	
 	
-	public static List<String> getCategories() throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+	public List<String> getCategories() throws DatabaseException{
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs = null;
 		List<String> categories=null;
@@ -230,8 +230,8 @@ public class DishDAO {
 		
 	}
 	
-	public static String CategoryFromId(int id) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+	public String CategoryFromId(int id) throws DatabaseException{
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		String category=null;
@@ -255,8 +255,8 @@ public class DishDAO {
 	}
 	
 	
-	public static Dish DishFromId(int id) throws IOException {
-		Connection con = DBConnection.getConnection();
+	public Dish DishFromId(int id) throws IOException {
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		Dish d=new Dish();
@@ -300,8 +300,8 @@ public class DishDAO {
 	}
 	
 	
-	public static List<Dish> getRestaurantMenu(int RestaurantId) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+	public List<Dish> getRestaurantMenu(int RestaurantId) throws DatabaseException{
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		List<Dish> dishList=null;
@@ -352,8 +352,8 @@ public class DishDAO {
 	}
 	
 	
-	public static List<Dish> getDishesFromSubCategory(int id) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+	public List<Dish> getDishesFromSubCategory(int id) throws DatabaseException{
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		List<Dish> dishList=null;
@@ -404,7 +404,7 @@ public class DishDAO {
 	}
 	
 	
-//	public static String EncodetoBase64(InputStream is) {
+//	public String EncodetoBase64(InputStream is) {
 //		String str=null;
 //		if(is!=null) {
 //			str = Base64.
@@ -417,21 +417,9 @@ public class DishDAO {
 //	}
 	
 	
-	public static void main(String[] args) throws IOException {
-		
-		
-//		Dish d=DishFromId(61);
-//		d.setDishName("Add62");
-//		d.setRestId(1);
-//		addDish(d);
-		System.out.println(getDishesFromSubCategory(1));
-//		System.out.println(d.toString());
-//		System.out.println(a+" Main");
-//		System.out.println(DishFromId(50));
-//		System.out.println(DeletedDish(DishFromId(2)));
-	}
 	
 	
 	
 
 }
+

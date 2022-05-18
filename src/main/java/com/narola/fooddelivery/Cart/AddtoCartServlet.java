@@ -1,15 +1,15 @@
 package com.narola.fooddelivery.Cart;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantOfServlet;
-import com.narola.fooddelivery.dishes.DishDAO;
-import com.narola.fooddelivery.restaurants.RestDAO;
 import com.narola.fooddelivery.user.User;
 
 /**
@@ -29,7 +29,7 @@ public class AddtoCartServlet extends HttpServlet {
 			HttpSession session=request.getSession();
 			Cart cart=null;
 			if(session.getAttribute("Cart")==null) {
-				cart=CartDAO.AddCart(DishDAO.DishFromId(id).getRestId());
+				cart=CartDAO.AddCart(DAOFactory.getInstance().getDishDAO().DishFromId(id).getRestId());
 				session.setAttribute("Cart", cart);
 			}
 			cart=(Cart) session.getAttribute("Cart");
@@ -42,7 +42,7 @@ public class AddtoCartServlet extends HttpServlet {
 			
 			CartItem item = new CartItem();
 			item.setCart(cart);
-			item.setDish(DishDAO.DishFromId(id));
+			item.setDish(DAOFactory.getInstance().getDishDAO().DishFromId(id));
 			item.setQty(Integer.parseInt(qty));
 			CartItemsDAO.AddCartItem(item);
 			
@@ -50,7 +50,7 @@ public class AddtoCartServlet extends HttpServlet {
 		}
 		
 		if(request.getRequestURI().contains(URLConstantOfServlet.ADD_TO_CART))
-			response.sendRedirect(request.getContextPath()+URLConstantOfServlet.RESTDETAIL+"?RestaurantId="+DishDAO.DishFromId(Integer.parseInt(dishId)).getRestId());
+			response.sendRedirect(request.getContextPath()+URLConstantOfServlet.RESTDETAIL+"?RestaurantId="+DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(dishId)).getRestId());
 		else if(request.getRequestURI().contains(URLConstantOfServlet.UPDATE_ITEM))
 			response.sendRedirect(request.getContextPath()+URLConstantOfServlet.CHECKOUT);
 	}

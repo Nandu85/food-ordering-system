@@ -13,7 +13,7 @@ import com.narola.fooddelivery.user.UserDAO;
 public class TransactionDAO {
 	
 	public static Transaction addTransaction(Transaction transaction) {
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {
@@ -53,7 +53,7 @@ public class TransactionDAO {
 	
 	public static Transaction getTransactionFromId(int id) {
 		Transaction transaction=null;
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		try {

@@ -18,7 +18,7 @@ public class UserDAO {
 	
 	
 	public static User addUser(User user) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet = null;
 		try {
@@ -55,7 +55,7 @@ public class UserDAO {
 	
 	public static User findUser(String username, String password) throws DatabaseException{
 		
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet = null;
 		User user=new User();
@@ -100,7 +100,7 @@ public class UserDAO {
 	
 	public static List<User> findAllUser() throws DatabaseException{
 		
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet = null;
 		List<User> users=null;
@@ -139,7 +139,7 @@ public class UserDAO {
 	
 	public static User findByUserId(int id) throws DatabaseException{
 		
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet = null;
 		User user=new User();
@@ -176,7 +176,7 @@ public class UserDAO {
 	
 	
 	public static User updateUser(User user) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet = null;
 		try {
@@ -206,7 +206,7 @@ public class UserDAO {
 
 	
 	public static User DeleteUser(User user) throws DatabaseException{
-		Connection con = DBConnection.getConnection();
+		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet = null;
 		try {

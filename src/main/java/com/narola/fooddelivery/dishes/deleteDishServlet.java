@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantOfServlet;
 /**
  * Servlet implementation class deleteDish
@@ -19,7 +20,7 @@ public class deleteDishServlet extends HttpServlet {
 		
 		String did=request.getParameter("DishId");
 		
-		DishDAO.DeletedDish(DishDAO.DishFromId(Integer.parseInt(did)));
+		DAOFactory.getInstance().getDishDAO().DeletedDish(DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(did)));
 		
 		response.sendRedirect(request.getContextPath()+URLConstantOfServlet.SEARCHDISH_WITH_NO_FILTER);
 

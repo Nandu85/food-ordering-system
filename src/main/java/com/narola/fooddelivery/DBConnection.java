@@ -8,14 +8,29 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-	private static Connection connection;
+	
+	private static DBConnection dbConnection = null;
 
-	public static Connection getConnection() throws DatabaseException {
+	private Connection connection = null;
+	private String dbname = null;
+	private String url = null;
+	private String username = null;
+	private String password = null;
+
+	public static DBConnection getInstance() {
+		if(dbConnection==null) {
+			dbConnection=new DBConnection();
+		}
+			return dbConnection;
+	}
+
+	public Connection getConnection() throws DatabaseException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			if (connection == null || connection.isClosed()) {
-				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/foodorderingsystem", "root",
-						"123456");
+				connection = DriverManager.getConnection(DBConnection.getInstance().getUrl()+DBConnection.getInstance().getDbname(),
+						DBConnection.getInstance().getUsername(),DBConnection.getInstance().getPassword());
+				
 			}
 		} catch (ClassNotFoundException e) {
 			throw new DatabaseException("Not able to find driver class", e);
@@ -44,6 +59,69 @@ public class DBConnection {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * @return the dbname
+	 */
+	public String getDbname() {
+		return dbname;
+	}
+
+	/**
+	 * @param dbname the dbname to set
+	 */
+	public void setDbname(String dbname) {
+		this.dbname = dbname;
+	}
+
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * @param url the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public static void main(String[] args) {
+		Connection connection = DBConnection.getInstance().getConnection();
+		if(connection!=null)
+			System.out.println("Successful  :)");
+		System.out.println(DBConnection.getInstance().getUrl()+DBConnection.getInstance().getDbname()+DBConnection.getInstance().getUsername()+DBConnection.getInstance().getPassword());
 	}
 
 }

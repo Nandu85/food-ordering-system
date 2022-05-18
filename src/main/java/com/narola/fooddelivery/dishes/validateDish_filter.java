@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.SubCategoryDAO;
@@ -44,9 +45,9 @@ public class validateDish_filter implements Filter {
 					req.setAttribute("errMsg", e.getMessage());
 					req.getRequestDispatcher(URLConstantAdmin.ADDDISH_JSP).include(req, response);
 				} else if(req.getRequestURI().contains(URLConstantOfServlet.UPDATEDISH)) {					
-					Dish dish = DishDAO.DishFromId(Integer.parseInt(request.getParameter("DishId")));
+					Dish dish = DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(request.getParameter("DishId")));
 					req.setAttribute("Dish", dish);
-					req.setAttribute("categoryOfDish", DishDAO.CategoryFromId(DishDAO.DishFromId(Integer.parseInt(req.getParameter("DishId"))).getCategoryId()));
+					req.setAttribute("categoryOfDish", DAOFactory.getInstance().getDishDAO().CategoryFromId(DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(req.getParameter("DishId"))).getCategoryId()));
 					req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
 					req.setAttribute("errMsg", e.getMessage());
 					req.getRequestDispatcher(URLConstantAdmin.UPDATEDISH_JSP).include(req, response);
