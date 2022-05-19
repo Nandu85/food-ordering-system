@@ -59,7 +59,7 @@
           				
           				</div>
           				
-          				<%if(user.getAdmin()==3){ %>
+          				<%if(user.getAdmin()==3 && user.getRestaurant()!=null){ %>
           				<br><hr>
           				<br>
 						<h1 class="card-title" align="center">Restaurant Profile</h1>

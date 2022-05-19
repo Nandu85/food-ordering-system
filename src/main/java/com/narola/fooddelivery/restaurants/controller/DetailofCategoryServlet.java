@@ -1,15 +1,16 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantUser;
-import com.narola.fooddelivery.category.SubCategoryDAO;
-import com.narola.fooddelivery.user.User;
+import com.narola.fooddelivery.restaurants.service.IRestaurantService;
+import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 
 public class DetailofCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,7 +20,7 @@ public class DetailofCategoryServlet extends HttpServlet {
 
 		String id = req.getParameter("id");
 		if (id != null) {
-			IRestaurantService restService = new RestaurantServiceImpl();
+			IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
 			
 			req.setAttribute("SubCategory", restService.getSubCategoryById(id));
 			req.setAttribute("Restaurants", restService.getRestaurantFromSubCategory(id));

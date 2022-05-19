@@ -5,8 +5,8 @@ import java.io.InputStream;
 import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.category.SubCategory;
 import com.narola.fooddelivery.category.SubCategoryDAO;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
-import com.narola.fooddelivery.restaurants.Restaurant;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 
 public class Dish {
 

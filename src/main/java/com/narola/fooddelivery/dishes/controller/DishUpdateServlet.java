@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.CategoryDAO;
@@ -18,7 +19,7 @@ import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
 
 public class DishUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -49,7 +50,7 @@ public class DishUpdateServlet extends HttpServlet {
 			dish.setDishtype(Integer.parseInt(dtype));
 			dish.setRestId(Integer.parseInt(restaurantID));
 
-			IDishService dishService = new DishServiceImpl();
+			IDishService dishService = ServiceFactory.getInstance().getDishService();
 			dishService.updateDish(dish, request);
 
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHDISH_WITH_NO_FILTER);

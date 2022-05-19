@@ -3,9 +3,9 @@ package com.narola.fooddelivery;
 import com.narola.fooddelivery.dishes.dao.DishDAOMYSQL;
 import com.narola.fooddelivery.dishes.dao.DishDAOPostGRESQL;
 import com.narola.fooddelivery.dishes.dao.IDishDAO;
-import com.narola.fooddelivery.restaurants.IRestDAO;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
-import com.narola.fooddelivery.restaurants.RestDAOPOSTGRESQL;
+import com.narola.fooddelivery.restaurants.dao.IRestDAO;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.dao.RestDAOPOSTGRESQL;
 
 public class DAOFactory {
 	private static DAOFactory DAO_HELPER = null;

@@ -10,8 +10,8 @@ import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
-import com.narola.fooddelivery.restaurants.Restaurant;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 
 public class User {
 

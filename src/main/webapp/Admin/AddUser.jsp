@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.io.*"%>
 <%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
-<%@page import="com.narola.fooddelivery.restaurants.Restaurant"%>
+<%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 

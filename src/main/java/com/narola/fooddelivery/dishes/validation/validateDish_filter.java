@@ -16,7 +16,7 @@ import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.DishException;
 import com.narola.fooddelivery.dishes.model.Dish;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
 
 /**
  * Servlet Filter implementation class validateDish

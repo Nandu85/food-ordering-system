@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.service.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +16,8 @@ import com.narola.fooddelivery.category.SubCategory;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.location.LocationDAO;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
+import com.narola.fooddelivery.restaurants.service.IRestaurantService;
 
 public class RestaurantServiceImpl implements IRestaurantService {
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.narola.fooddelivery.dishes.model.Dish;
-import com.narola.fooddelivery.restaurants.Restaurant;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.user.User;
 
 public class Cart {

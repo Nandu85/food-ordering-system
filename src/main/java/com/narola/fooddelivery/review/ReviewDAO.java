@@ -13,8 +13,8 @@ import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
-import com.narola.fooddelivery.restaurants.Restaurant;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 
 
 

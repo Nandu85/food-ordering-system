@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +12,9 @@ import java.util.List;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.location.LocationDAO;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 
-public class RestDAOMYSQL implements IRestDAO{
+public class RestDAOPOSTGRESQL implements IRestDAO{
 
 	public Restaurant addRestaurant(Restaurant restaurant) throws DatabaseException {
 		Connection con = DBConnection.getInstance().getConnection();

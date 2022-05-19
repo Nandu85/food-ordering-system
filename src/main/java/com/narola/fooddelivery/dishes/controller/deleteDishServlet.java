@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
@@ -23,7 +24,7 @@ public class deleteDishServlet extends HttpServlet {
 
 		String did = request.getParameter("DishId");
 
-		IDishService dishService = new DishServiceImpl();
+		IDishService dishService = ServiceFactory.getInstance().getDishService();
 
 		dishService.deleteDish(did);
 

@@ -1,8 +1,6 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import org.apache.tomcat.util.http.fileupload.IOUtils;
-
-import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.location.Location;
-import com.narola.fooddelivery.location.LocationDAO;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
+import com.narola.fooddelivery.restaurants.service.IRestaurantService;
+import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 import com.narola.fooddelivery.user.User;
 
 /**
@@ -62,7 +60,7 @@ public class AddRestaurantServlet extends HttpServlet {
 
 			Part part = request.getPart("RestPic");
 
-			IRestaurantService restService = new RestaurantServiceImpl();
+			IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
 			restService.addRestaurant(location, part, restaurant);
 			
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHRESTAURANT);

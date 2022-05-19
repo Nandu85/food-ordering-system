@@ -11,19 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.DishException;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
+import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
 
 
 public class AddDishesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		IDishService dishService = ServiceFactory.getInstance().getDishService();
 		req.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 
 		req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());;

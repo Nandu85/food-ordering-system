@@ -3,7 +3,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*"%>
 <%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
-<%@page import="com.narola.fooddelivery.restaurants.Restaurant"%>
+<%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
 <%@page import="com.narola.fooddelivery.Cart.Cart"%>
 <%@page import="com.narola.fooddelivery.URLConstantUser"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

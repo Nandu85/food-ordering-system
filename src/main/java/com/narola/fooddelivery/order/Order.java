@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.narola.fooddelivery.Transaction.Transaction;
 import com.narola.fooddelivery.location.Location;
-import com.narola.fooddelivery.restaurants.Restaurant;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.review.Review;
 import com.narola.fooddelivery.user.User;
 

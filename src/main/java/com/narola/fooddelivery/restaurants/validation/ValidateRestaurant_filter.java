@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.validation;
 
 import java.io.IOException;
 
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
+import com.narola.fooddelivery.restaurants.RestaurantException;
 
 /**
  * Servlet Filter implementation class ValidateRestaurant_filter

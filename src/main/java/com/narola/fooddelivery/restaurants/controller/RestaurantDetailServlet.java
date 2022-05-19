@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.controller;
 
 import java.io.IOException;
 
@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantUser;
+import com.narola.fooddelivery.restaurants.service.IRestaurantService;
+import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 import com.narola.fooddelivery.user.User;
 
 /**
@@ -20,7 +22,7 @@ public class RestaurantDetailServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		IRestaurantService restaurantService = new RestaurantServiceImpl();
+		IRestaurantService restaurantService = ServiceFactory.getInstance().getRestaurantService();
 		String restId=request.getParameter("RestaurantId");
 		if(restId!=null)
 			request.setAttribute("Restaurant", restaurantService.getRestaurantFromId(restId));

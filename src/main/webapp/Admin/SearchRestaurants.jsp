@@ -3,7 +3,7 @@
 <%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
 <%@page import="com.narola.fooddelivery.URLConstantOfServlet"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.narola.fooddelivery.restaurants.Restaurant"%>
+<%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
 <%@page import="java.util.Iterator"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>

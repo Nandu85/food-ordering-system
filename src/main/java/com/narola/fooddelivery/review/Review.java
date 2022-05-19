@@ -3,7 +3,7 @@ package com.narola.fooddelivery.review;
 import java.sql.Timestamp;
 
 import com.narola.fooddelivery.order.Order;
-import com.narola.fooddelivery.restaurants.Restaurant;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.user.User;
 
 public class Review {

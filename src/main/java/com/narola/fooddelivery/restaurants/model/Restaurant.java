@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

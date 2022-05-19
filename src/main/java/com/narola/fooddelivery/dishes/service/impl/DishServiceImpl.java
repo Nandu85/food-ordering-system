@@ -2,6 +2,7 @@ package com.narola.fooddelivery.dishes.service.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -91,7 +92,13 @@ public class DishServiceImpl implements IDishService {
 
 		User sessionUser = (User) request.getSession().getAttribute("user");
 		if (sessionUser.getAdmin() == 3 && sessionUser.getRestaurantId() != 0) {
-			request.setAttribute("dishList", sessionUser.getRestaurant().getMenu());
+			int restId = sessionUser.getRestaurantId();
+			List<Dish> dlForRest = new ArrayList<>();
+			for (Dish dish : dl) {
+				if (dish.getRestId() == restId)
+					dlForRest.add(dish);
+			}
+			request.setAttribute("dishList", dlForRest);
 		}
 
 		return request;

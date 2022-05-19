@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.controller;
 
 import java.io.IOException;
 
@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.DAOFactory;
+import com.narola.fooddelivery.ServiceFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantUser;
 import com.narola.fooddelivery.location.LocationDAO;
+import com.narola.fooddelivery.restaurants.service.IRestaurantService;
+import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 import com.narola.fooddelivery.user.User;
 
 public class SearchRestaurantServlet extends HttpServlet {
@@ -43,7 +46,7 @@ public class SearchRestaurantServlet extends HttpServlet {
 		String restaurantName = request.getParameter("RestaurantName");
 		String area = request.getParameter("Area");
 
-		IRestaurantService restService = new RestaurantServiceImpl();
+		IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
 		restService.searchRestaurants(request, restaurantName, area);
 		
 		User user = (User) request.getSession().getAttribute("user");

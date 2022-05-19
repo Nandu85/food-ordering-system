@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.restaurants;
+package com.narola.fooddelivery.restaurants.service;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import javax.servlet.http.Part;
 
 import com.narola.fooddelivery.category.SubCategory;
 import com.narola.fooddelivery.location.Location;
+import com.narola.fooddelivery.restaurants.model.Restaurant;
 
 public interface IRestaurantService {
 
