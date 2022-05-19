@@ -17,22 +17,22 @@ import com.narola.fooddelivery.user.User;
  */
 public class RestaurantDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("RestaurantId")!=null)
-			request.setAttribute("Restaurant", DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
-//		request.setAttribute("dishList", DishDAO.getRestaurantMenu(Integer.parseInt(request.getParameter("RestaurantId"))));
+		IRestaurantService restaurantService = new RestaurantServiceImpl();
+		String restId=request.getParameter("RestaurantId");
+		if(restId!=null)
+			request.setAttribute("Restaurant", restaurantService.getRestaurantFromId(restId));
 		User user=(User) request.getSession().getAttribute("user");
 		if(user==null || user.getAdmin()==0)
 			getServletContext().getRequestDispatcher(URLConstantUser.RESTDETAIL_JSP).forward(request, response);
 		
 		else if(user.getAdmin()==1)
 			getServletContext().getRequestDispatcher(URLConstantAdmin.RESTDETAIL_JSP).forward(request, response);
-		//getServletContext().getRequestDispatcher(URLConstant_Admin.RESTDETAIL_JSP).forward(request, response);
 	}
 
-	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

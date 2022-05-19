@@ -24,23 +24,21 @@ import com.narola.fooddelivery.location.LocationDAO;
 public class UpdateRestaurantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     String referer=null;
+    
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		referer=request.getHeader("referer");
 		request.setAttribute("Restaurant", DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
 		getServletContext().getRequestDispatcher(URLConstantAdmin.UPDATERESTAURANT_JSP).forward(request, response);
 	}
-
 	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		doGet(request, response);
-//		System.out.println();
-		String RestaurantId=request.getParameter("RestaurantId");
-		String RestaurantName=request.getParameter("RestName");
+		String restaurantId=request.getParameter("RestaurantId");
+		String restaurantName=request.getParameter("RestName");
 		String email=request.getParameter("email");
-		int DisableFlag=request.getParameter("Disable")==null?0:1;
-
-		Part RestImage = request.getPart("RestPic");
+		int disableFlag=request.getParameter("Disable")==null?0:1;
 		
 		String addressline=request.getParameter("addressline");
 		String area=request.getParameter("area");
@@ -55,25 +53,10 @@ public class UpdateRestaurantServlet extends HttpServlet {
 		location.setState(state);
 		location.setPincode(Integer.parseInt(pincode));
 	
-		LocationDAO.addLocation(location);
+		Part restImage = request.getPart("RestPic");
 		
-		InputStream is=RestImage.getInputStream();
-		byte bytes[]=new byte[is.available()];
-		IOUtils.readFully(is, bytes);
-		String imgToString=Base64.getEncoder().encodeToString(bytes);
-		
-	
-		Restaurant restaurant = DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(RestaurantId));
-		
-		restaurant.setRestName(RestaurantName);
-		restaurant.setEmail(email);
-		restaurant.setLocation(location);
-		restaurant.setLocId(LocationDAO.getLocationId(location));
-		if(!imgToString.isEmpty())
-			restaurant.setRestphotoAsBase64(imgToString);
-		restaurant.setDisableFlag(DisableFlag);
-//		System.out.println(imgToString+" From Update Rest");
-		DAOFactory.getInstance().getRestDAO().updateRestaurant(restaurant);
+		IRestaurantService restService = new RestaurantServiceImpl();
+		restService.updateRestaurant(location, restImage, restaurantName, email, restaurantId, disableFlag);
 		
 		if(referer!=null)
 			response.sendRedirect(referer);
