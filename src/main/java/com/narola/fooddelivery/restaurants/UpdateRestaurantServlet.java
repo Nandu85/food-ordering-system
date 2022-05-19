@@ -12,6 +12,7 @@ import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.location.Location;
@@ -25,7 +26,7 @@ public class UpdateRestaurantServlet extends HttpServlet {
     String referer=null;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		referer=request.getHeader("referer");
-		request.setAttribute("Restaurant", RestDAO.getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
+		request.setAttribute("Restaurant", DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
 		getServletContext().getRequestDispatcher(URLConstantAdmin.UPDATERESTAURANT_JSP).forward(request, response);
 	}
 
@@ -62,7 +63,7 @@ public class UpdateRestaurantServlet extends HttpServlet {
 		String imgToString=Base64.getEncoder().encodeToString(bytes);
 		
 	
-		Restaurant restaurant = RestDAO.getRestaurantFromId(Integer.parseInt(RestaurantId));
+		Restaurant restaurant = DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(RestaurantId));
 		
 		restaurant.setRestName(RestaurantName);
 		restaurant.setEmail(email);
@@ -72,7 +73,7 @@ public class UpdateRestaurantServlet extends HttpServlet {
 			restaurant.setRestphotoAsBase64(imgToString);
 		restaurant.setDisableFlag(DisableFlag);
 //		System.out.println(imgToString+" From Update Rest");
-		RestDAO.updateRestaurant(restaurant);
+		DAOFactory.getInstance().getRestDAO().updateRestaurant(restaurant);
 		
 		if(referer!=null)
 			response.sendRedirect(referer);

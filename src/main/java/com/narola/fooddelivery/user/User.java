@@ -5,11 +5,12 @@ import java.util.Base64;
 import java.util.List;
 
 import com.narola.fooddelivery.Constant;
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 import com.narola.fooddelivery.restaurants.Restaurant;
 
 public class User {
@@ -55,7 +56,7 @@ public class User {
 	
 	public Restaurant getRestaurant() {
 		if(restaurant==null && RestaurantId!=0)
-			return RestDAO.getRestaurantFromId(RestaurantId);
+			return DAOFactory.getInstance().getRestDAO().getRestaurantFromId(RestaurantId);
 		return restaurant;
 	}
 	public void setRestaurant(Restaurant restaurant) {

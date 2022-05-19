@@ -11,13 +11,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.Cart.Cart;
 import com.narola.fooddelivery.Cart.CartDAO;
 import com.narola.fooddelivery.Transaction.TransactionDAO;
 import com.narola.fooddelivery.location.LocationDAO;
-import com.narola.fooddelivery.restaurants.RestDAO;
 import com.narola.fooddelivery.user.UserDAO;
 
 public class OrderDAO {
@@ -188,7 +188,7 @@ public class OrderDAO {
 			if (resultSet.next()) {
 				order.setOrderId(id);
 				order.setUser(UserDAO.findByUserId(resultSet.getInt("UserId")));
-				order.setRestaurant(RestDAO.getRestaurantFromId(resultSet.getInt("RestId")));
+				order.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(resultSet.getInt("RestId")));
 				order.setTotal(resultSet.getInt("Total"));
 				order.setOrderStatus(resultSet.getInt("Status"));
 				order.setTransaction(TransactionDAO.getTransactionFromId(resultSet.getInt("TransactionId")));
@@ -224,7 +224,7 @@ public class OrderDAO {
 			if (resultSet.next()) {
 				order.setOrderId(resultSet.getInt("OrderId"));
 				order.setUser(UserDAO.findByUserId(resultSet.getInt("UserId")));
-				order.setRestaurant(RestDAO.getRestaurantFromId(resultSet.getInt("RestId")));
+				order.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(resultSet.getInt("RestId")));
 				order.setTotal(resultSet.getInt("Total"));
 				order.setOrderStatus(resultSet.getInt("Status"));
 				order.setTransaction(TransactionDAO.getTransactionFromId(resultSet.getInt("TransactionId")));
@@ -285,7 +285,7 @@ public class OrderDAO {
 				Order order = new Order();
 				order.setOrderId(resultSet.getInt("OrderId"));
 				order.setUser(UserDAO.findByUserId(resultSet.getInt("UserId")));
-				order.setRestaurant(RestDAO.getRestaurantFromId(resultSet.getInt("RestId")));
+				order.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(resultSet.getInt("RestId")));
 				order.setTotal(resultSet.getInt("Total"));
 				order.setOrderStatus(resultSet.getInt("Status"));
 				order.setTransaction(TransactionDAO.getTransactionFromId(resultSet.getInt("TransactionId")));
@@ -321,7 +321,7 @@ public class OrderDAO {
 				Order order = new Order();
 				order.setOrderId(resultSet.getInt("OrderId"));
 				order.setUser(UserDAO.findByUserId(resultSet.getInt("UserId")));
-				order.setRestaurant(RestDAO.getRestaurantFromId(resultSet.getInt("RestId")));
+				order.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(resultSet.getInt("RestId")));
 				order.setTotal(resultSet.getInt("Total"));
 				order.setOrderStatus(resultSet.getInt("Status"));
 				order.setTransaction(TransactionDAO.getTransactionFromId(resultSet.getInt("TransactionId")));
@@ -403,7 +403,7 @@ public class OrderDAO {
 				Order order = new Order();
 				order.setOrderId(rs.getInt("OrderId"));
 				order.setUser(UserDAO.findByUserId(rs.getInt("UserId")));
-				order.setRestaurant(RestDAO.getRestaurantFromId(rs.getInt("RestId")));
+				order.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(rs.getInt("RestId")));
 				order.setTotal(rs.getInt("Total"));
 				order.setOrderStatus(rs.getInt("Status"));
 				order.setTransaction(TransactionDAO.getTransactionFromId(rs.getInt("TransactionId")));

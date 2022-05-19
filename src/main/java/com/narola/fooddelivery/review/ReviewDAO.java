@@ -8,11 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 import com.narola.fooddelivery.restaurants.Restaurant;
 
 
@@ -128,7 +129,7 @@ public class ReviewDAO {
 	
 	public static void main(String[] args) {
 		Order order=OrderDAO.getOrderFromId(35);
-		Restaurant rest=RestDAO.getRestaurantFromId(1);
+		Restaurant rest=DAOFactory.getInstance().getRestDAO().getRestaurantFromId(1);
 		System.out.println(getReviewofOrder(order).getReviewId());
 		System.out.println(getReviewofRestaurant(rest));
 	}

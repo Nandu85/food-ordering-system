@@ -18,7 +18,7 @@ import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 
 public class DishUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -57,7 +57,7 @@ public class DishUpdateServlet extends HttpServlet {
 		} catch (Exception e2) {
 
 			e2.printStackTrace();
-			request.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 			request.setAttribute("Dish",
 					DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(request.getParameter("DishId"))));
 			request.setAttribute("categories", DAOFactory.getInstance().getDishDAO().getCategories());
@@ -73,7 +73,7 @@ public class DishUpdateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String str = URLConstantAdmin.UPDATEDISH_JSP + "?DishId=" + String.valueOf(req.getParameter("DishId"));
-		req.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+		req.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 		req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
 
 		req.setAttribute("categories", CategoryDAO.getAllCategories());

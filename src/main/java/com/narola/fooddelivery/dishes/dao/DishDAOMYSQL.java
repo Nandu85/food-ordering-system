@@ -18,7 +18,7 @@ import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.model.Dish;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 
 public class DishDAOMYSQL implements IDishDAO {
 
@@ -43,7 +43,7 @@ public class DishDAOMYSQL implements IDishDAO {
 			if (resultSet.next()) {
 				dish.setDishId(resultSet.getInt(1));
 				
-				dish.setRestaurant(RestDAO.getRestaurantFromId(dish.getRestId()));
+				dish.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(dish.getRestId()));
 //				System.out.println(resultSet.getInt(1)+"  "+dish.getDishId());// Method Running
 			}
 		} catch (SQLException e) {

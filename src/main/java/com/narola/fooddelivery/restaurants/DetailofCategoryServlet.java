@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantUser;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.user.User;
@@ -22,7 +23,7 @@ public class DetailofCategoryServlet extends HttpServlet {
 		String id=req.getParameter("id");
 		if(id!=null) {
 			req.setAttribute("SubCategory", SubCategoryDAO.getSubCategoryById(Integer.parseInt(id)));
-			req.setAttribute("Restaurants", RestDAO.getRestaurantsFromSubCategory(Integer.parseInt(id)));
+			req.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getRestaurantsFromSubCategory(Integer.parseInt(id)));
 			getServletContext().getRequestDispatcher(URLConstantUser.CATEGORYDETAIL_JSP).forward(req, resp);
 		}
 		else

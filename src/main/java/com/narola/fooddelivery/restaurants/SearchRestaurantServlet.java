@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantUser;
 import com.narola.fooddelivery.location.LocationDAO;
@@ -20,7 +21,7 @@ public class SearchRestaurantServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+		request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 		request.setAttribute("Areas", LocationDAO.getAreas());
 		User user=(User) request.getSession().getAttribute("user");
 		if(user!=null) {
@@ -41,11 +42,11 @@ public class SearchRestaurantServlet extends HttpServlet {
 		String Area = request.getParameter("Area");
 
 		if(!RestaurantName.equals(""))
-			request.setAttribute("Restaurants", RestDAO.searchRestaurantFromName(RestaurantName));
+			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().searchRestaurantFromName(RestaurantName));
 		else if(!Area.equals(""))
-			request.setAttribute("Restaurants", RestDAO.searchRestaurantFromArea(Area));
+			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().searchRestaurantFromArea(Area));
 		else
-			request.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 		request.setAttribute("Areas", LocationDAO.getAreas());
 		User user=(User) request.getSession().getAttribute("user");
 		int usertype=user.getAdmin();

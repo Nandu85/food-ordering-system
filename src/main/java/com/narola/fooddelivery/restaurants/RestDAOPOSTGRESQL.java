@@ -13,9 +13,9 @@ import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.location.LocationDAO;
 
-public class RestDAO {
+public class RestDAOPOSTGRESQL implements IRestDAO{
 
-	public static Restaurant addRestaurant(Restaurant restaurant) throws DatabaseException {
+	public Restaurant addRestaurant(Restaurant restaurant) throws DatabaseException {
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
@@ -51,7 +51,7 @@ public class RestDAO {
 	 * @return
 	 * @throws DatabaseException
 	 */
-	public static List<Restaurant> searchRestaurantFromName(String RestaurantName) throws DatabaseException {
+	public List<Restaurant> searchRestaurantFromName(String RestaurantName) throws DatabaseException {
 		List<Restaurant> restaurant = null;
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
@@ -59,7 +59,7 @@ public class RestDAO {
 		try {
 			String query="SELECT * FROM restaurants where restname like \""+RestaurantName+"\"\'%\'";
 			ps = con.prepareStatement(query);
-//			ps.setString(1, RestaurantName);
+
 			resultSet = ps.executeQuery();
 			restaurant = new ArrayList<>();
 			while (resultSet.next()) {
@@ -86,16 +86,16 @@ public class RestDAO {
 
 	}
 
-	public static List<Restaurant> searchRestaurantFromArea(String Area) throws DatabaseException {
+	public List<Restaurant> searchRestaurantFromArea(String area) throws DatabaseException {
 		List<Restaurant> restaurant = null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
 		Connection con = DBConnection.getInstance().getConnection();
 		try {
 			ps=con.prepareStatement("SELECT * FROM restaurants where Location IN(SELECT LocId FROM location_restaurants where Area=?)");
-			ps.setString(1, Area);
+			ps.setString(1, area);
 			resultSet = ps.executeQuery();
-			restaurant=new ArrayList<Restaurant>();
+			restaurant=new ArrayList<>();
 			while (resultSet.next()) {
 				Restaurant rest = new Restaurant();
 				rest.setRestId(resultSet.getInt("restid"));
@@ -120,7 +120,7 @@ public class RestDAO {
 
 	}
 
-	public static List<Restaurant> getAllRestaurants() throws DatabaseException {
+	public List<Restaurant> getAllRestaurants() throws DatabaseException {
 		List<Restaurant> restaurant = null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
@@ -153,7 +153,7 @@ public class RestDAO {
 		return restaurant;
 	}
 
-	public static Restaurant getRestaurantFromId(int id) throws DatabaseException {
+	public Restaurant getRestaurantFromId(int id) throws DatabaseException {
 		Restaurant restaurant = null;
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
@@ -184,7 +184,7 @@ public class RestDAO {
 		return restaurant;
 	}
 
-	public static Restaurant updateRestaurant(Restaurant restaurant) throws DatabaseException {
+	public Restaurant updateRestaurant(Restaurant restaurant) throws DatabaseException {
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
@@ -212,7 +212,7 @@ public class RestDAO {
 		return restaurant;
 	}
 
-	public static Restaurant setRestaurantAdmin(Restaurant restaurant) throws DatabaseException {
+	public Restaurant setRestaurantAdmin(Restaurant restaurant) throws DatabaseException {
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
@@ -252,7 +252,7 @@ public class RestDAO {
 		return restaurant;
 	}
 
-	public static List<String> getRestaurantCategories(int RestId) throws DatabaseException {
+	public List<String> getRestaurantCategories(int restId) throws DatabaseException {
 		Connection con = DBConnection.getInstance().getConnection();
 		List<String> catList = null;
 		PreparedStatement ps=null;
@@ -260,7 +260,7 @@ public class RestDAO {
 		
 		try {
 			ps = con.prepareStatement("SELECT CategoryName FROM category where categoryId IN(SELECT distinct categoryid FROM dishes where Restaurant=?)");
-			ps.setInt(1, RestId);
+			ps.setInt(1, restId);
 			rs = ps.executeQuery();
 			catList=new ArrayList<>();
 			while (rs.next()) {
@@ -277,37 +277,7 @@ public class RestDAO {
 		return catList;
 	}
 
-//	public static Restaurant findRestaurant(String email, String password) throws DatabaseException {//not used
-//		Restaurant restaurant = null;
-//		PreparedStatement ps=null;
-//		ResultSet resultSet=null;
-//		Connection con = DBConnection.getInstance().getConnection();
-//		try {
-//			ps=con.prepareStatement("SELECT * FROM restaurants where email=?");
-//			ps.setString(1, email);
-//			resultSet = ps.executeQuery();
-//
-//			if (resultSet.next()) {
-//				restaurant = getRestaurantFromId(resultSet.getInt("restid"));
-//				// get password and match with given
-//				if (!restaurant.getPassword().equals(password)) {
-//					throw new RestaurantException("Password is not matched");
-//				}
-//
-//			} else {
-//				throw new RestaurantException("Restaurant not found");
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			DBConnection.releaseResource(ps, resultSet);
-//		}
-//
-//		return restaurant;
-//
-//	}
-
-	public static Restaurant getRestaurantFromUserId(int id) throws DatabaseException {
+	public Restaurant getRestaurantFromUserId(int id) throws DatabaseException {
 		Restaurant restaurant = new Restaurant();
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps=null;
@@ -340,7 +310,7 @@ public class RestDAO {
 		return restaurant;
 	}
 
-	public static List<Restaurant> getRestaurantsFromSubCategory(int id) throws DatabaseException {
+	public List<Restaurant> getRestaurantsFromSubCategory(int id) throws DatabaseException {
 		List<Restaurant> restaurant = null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
@@ -375,7 +345,7 @@ public class RestDAO {
 		return restaurant;
 	}
 	
-	public static Timestamp getJoinDate(int restId) {
+	public Timestamp getJoinDate(int restId) {
 		Timestamp timestamp=null;
 		PreparedStatement ps=null;
 		ResultSet resultSet=null;
@@ -401,19 +371,4 @@ public class RestDAO {
 	}
 	
 	
-	public static void main(String[] args) {
-//		Restaurant rest = getRestaurantFromId(13);
-//		rest.setUserId(19);
-//		setRestaurantAdmin(rest);
-//		rest.setRestName("DummyRest");
-//		rest.setEmail("asd@gmail.com");
-//		rest.setLocId(3);
-//		addRestaurant(rest);
-		System.out.println(getRestaurantsFromSubCategory(1));
-//		System.out.println(getRestaurantFromUserId(19).toString());
-//		rest.setRestName("Dummy1");
-//		System.out.println(getAllRestaurants().toString());
-//		rest.setDisableFlag(0);
-	}
-
 }

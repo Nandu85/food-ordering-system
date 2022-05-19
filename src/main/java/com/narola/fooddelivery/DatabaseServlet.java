@@ -12,7 +12,9 @@ public class DatabaseServlet extends HttpServlet {
 		try {
 			String dbType = getServletContext().getInitParameter("DB-IN-USE");
 
+			
 			DAOFactory.getInstance().init(dbType);
+			
 			String dbUrl = getServletContext().getInitParameter(dbType+"_dburl");
 			String dbName = getServletContext().getInitParameter(dbType+"_dbname");
 			String username = getServletContext().getInitParameter(dbType+"_username");

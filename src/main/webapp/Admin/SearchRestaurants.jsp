@@ -57,20 +57,19 @@
 					<div class="col-lg-12 grid-margin stretch-card">
           		<div class="card">
           			<div class="card-body">
-          				<!-- <h4 class="card-title">Orders Received</h4> -->
-          				
+
           				<table class="table table-hover table-bordered">
           					<thead>
           						<tr>
-          							<th><b>RestaurantId</b></th>
-          							<th><b>Name</b></th>
-          							<th><b>Email</b></th>
-          							<!-- <th style="width: 20%;">Location</th> -->
-          							<th><b>Admin</b></th>
+          							<th><strong>RestaurantId</strong></th>
+          							<th><strong>Name</strong></th>
+          							<th><strong>Email</strong></th>
+
+          							<th><strong>Admin</strong></th>
           							
-          							<th><b>Disabled</b></th>
+          							<th><strong>Disabled</strong></th>
           							
-          							<th><b>Joined At</b></th>
+          							<th><strong>Joined At</strong></th>
           						</tr>
           						
           					</thead>
@@ -80,7 +79,10 @@
           					
           					<tr>
           					<td><c:out value="${rest.getRestId()}"></c:out></td>
-          					<td><c:out value="${rest.getRestName()}"></c:out>&nbsp;</td>
+          					<td><c:out value="${rest.getRestName()}"></c:out>&nbsp;
+          					<c:if test="${rest.getDisableFlag()==1}"><strong>(Disabled)</strong></c:if>
+          					
+          					</td>
           					
           					<td><c:out value="${rest.getEmail()}"></c:out> </td>
           					
@@ -89,7 +91,9 @@
           					<td><c:out value="${rest.getUser().getUsername()}"></c:out> </td>
           					<td><c:out value="${rest.getDisableFlag()}"></c:out></td>
           					
-          					<td><fmt:formatDate type = "date" value = "${rest.getTimestamp()}"	/></td> 	
+          					<td><fmt:formatDate type = "date" value = "${rest.getTimestamp()}"	/></td> 
+          					
+          					<td><a href="<%=request.getContextPath() + URLConstantOfServlet.UPDATERESTAURANT+"?RestaurantId="%>${rest.getRestId()}">Update</a></td>	
           					
           					</tr>
           					

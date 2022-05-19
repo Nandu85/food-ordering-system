@@ -26,7 +26,7 @@ public class Restaurant {
 	
 	public Timestamp getTimestamp() {
 		if(timestamp==null)
-			setTimestamp(RestDAO.getJoinDate(RestId));
+			setTimestamp(DAOFactory.getInstance().getRestDAO().getJoinDate(RestId));
 		return timestamp;
 	}
 	public void setTimestamp(Timestamp timestamp) {
@@ -59,7 +59,7 @@ public class Restaurant {
 	
 	public ArrayList<String> getCategories() {
 		if(Categories==null)
-			return (ArrayList<String>) RestDAO.getRestaurantCategories(RestId);
+			return (ArrayList<String>) DAOFactory.getInstance().getRestDAO().getRestaurantCategories(RestId);
 		return Categories;
 	}
 	public void setCategories(ArrayList<String> categories) {

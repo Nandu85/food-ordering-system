@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
-import com.narola.fooddelivery.restaurants.RestDAO;
 import com.narola.fooddelivery.restaurants.Restaurant;
 
 /**
@@ -22,7 +22,7 @@ public class UpdateUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+		request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 		if(request.getParameter("UserId")!=null) {
 			request.setAttribute("user", UserDAO.findByUserId(Integer.parseInt(request.getParameter("UserId"))));
 			getServletContext().getRequestDispatcher(URLConstantAdmin.UPDATEUSER_JSP).forward(request, response);
@@ -48,9 +48,9 @@ public class UpdateUserServlet extends HttpServlet {
 			UserDAO.updateUser(user);
 			
 			if(user.getAdmin()==3) {
-				Restaurant restaurant=RestDAO.getRestaurantFromId(Integer.parseInt(request.getParameter("Restaurant")));
+				Restaurant restaurant=DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(request.getParameter("Restaurant")));
 				restaurant.setUserId(UserId);
-				RestDAO.setRestaurantAdmin(restaurant);
+				DAOFactory.getInstance().getRestDAO().setRestaurantAdmin(restaurant);
 				user.setRestaurantId(UserId);
 			}
 		}

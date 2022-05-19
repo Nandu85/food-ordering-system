@@ -12,6 +12,7 @@ import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.location.Location;
@@ -69,7 +70,7 @@ public class AddRestaurantServlet extends HttpServlet {
 			restaurant.setRestphotoAsBase64(imageAsBase64);
 			restaurant.setLocId(location.getLocationId());
 
-			RestDAO.addRestaurant(restaurant);
+			DAOFactory.getInstance().getRestDAO().addRestaurant(restaurant);
 			response.sendRedirect(request.getContextPath()+URLConstantOfServlet.SEARCHRESTAURANT);
 //			getServletContext().getRequestDispatcher(URLConstant.SEARCHRESTAURANT).forward(request, response);
 			

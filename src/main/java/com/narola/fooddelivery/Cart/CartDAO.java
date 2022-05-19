@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
-import com.narola.fooddelivery.restaurants.RestDAO;
 import com.narola.fooddelivery.user.UserDAO;
 
 public class CartDAO {
@@ -27,7 +27,7 @@ public class CartDAO {
 			if (resultSet.next()) {
 				cart = new Cart();
 				cart.setCartId(resultSet.getInt(1));
-				cart.setRestaurant(RestDAO.getRestaurantFromId(restId));
+				cart.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(restId));
 
 			}
 		} catch (SQLException e) {
@@ -54,7 +54,7 @@ public class CartDAO {
 			if (resultSet.next()) {
 				cart = new Cart();
 				cart.setCartId(resultSet.getInt("cartId"));
-				cart.setRestaurant(RestDAO.getRestaurantFromId(resultSet.getInt("RestaurantId")));
+				cart.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(resultSet.getInt("RestaurantId")));
 				cart.setTotal(resultSet.getInt("TotalAmount"));
 				cart.setUser(UserDAO.findByUserId(resultSet.getInt("UserId")));
 
@@ -83,7 +83,7 @@ public class CartDAO {
 			if (resultSet.next()) {
 				cart = new Cart();
 				cart.setCartId(resultSet.getInt("cartId"));
-				cart.setRestaurant(RestDAO.getRestaurantFromId(resultSet.getInt("RestaurantId")));
+				cart.setRestaurant(DAOFactory.getInstance().getRestDAO().getRestaurantFromId(resultSet.getInt("RestaurantId")));
 				cart.setTotal(resultSet.getInt("TotalAmount"));
 				cart.setUser(UserDAO.findByUserId(resultSet.getInt("UserId")));
 

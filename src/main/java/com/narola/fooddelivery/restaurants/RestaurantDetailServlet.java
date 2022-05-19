@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantUser;
 import com.narola.fooddelivery.user.User;
@@ -20,7 +21,7 @@ public class RestaurantDetailServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("RestaurantId")!=null)
-			request.setAttribute("Restaurant", RestDAO.getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
+			request.setAttribute("Restaurant", DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
 //		request.setAttribute("dishList", DishDAO.getRestaurantMenu(Integer.parseInt(request.getParameter("RestaurantId"))));
 		User user=(User) request.getSession().getAttribute("user");
 		if(user==null || user.getAdmin()==0)

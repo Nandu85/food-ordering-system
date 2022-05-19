@@ -16,7 +16,7 @@ import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.DishException;
 import com.narola.fooddelivery.dishes.model.Dish;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 
 /**
  * Servlet Filter implementation class validateDish
@@ -41,7 +41,7 @@ public class validateDish_filter implements Filter {
 				DishValidator.validate(dname, price, ingr, category, dtype);
 					chain.doFilter(request, response);			
 			} catch (DishException e) {
-				req.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+				req.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 				if(req.getRequestURI().contains(URLConstantOfServlet.ADDDISH)) {
 					req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
 					req.setAttribute("errMsg", e.getMessage());

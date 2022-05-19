@@ -8,11 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.DBConnection;
 import com.narola.fooddelivery.DatabaseException;
-import com.narola.fooddelivery.dishes.model.Dish;
-import com.narola.fooddelivery.restaurants.RestDAO;
-import com.narola.fooddelivery.restaurants.Restaurant;
 
 public class UserDAO {
 	
@@ -75,7 +73,7 @@ public class UserDAO {
 				user.setPassword(resultSet.getString("password"));
 				user.setAdmin(resultSet.getInt("usertype"));
 				if(user.getAdmin()==3)
-					user.setRestaurantId(RestDAO.getRestaurantFromUserId(resultSet.getInt("userId")).getRestId());
+					user.setRestaurantId(DAOFactory.getInstance().getRestDAO().getRestaurantFromUserId(resultSet.getInt("userId")).getRestId());
 			}
 		} catch (SQLException e) {
 			throw new DatabaseException("Error while findUser", e);
@@ -120,7 +118,7 @@ public class UserDAO {
 				user.setPassword(resultSet.getString("password"));
 				user.setAdmin(resultSet.getInt("usertype"));
 				if(user.getAdmin()==3)
-					user.setRestaurantId(RestDAO.getRestaurantFromUserId(resultSet.getInt("userId")).getRestId());
+					user.setRestaurantId(DAOFactory.getInstance().getRestDAO().getRestaurantFromUserId(resultSet.getInt("userId")).getRestId());
 				
 				users.add(user);
 			}
@@ -160,7 +158,7 @@ public class UserDAO {
 				user.setEmail(resultSet.getString("email"));
 				user.setPassword(resultSet.getString("password"));
 				user.setAdmin(resultSet.getInt("usertype"));
-				user.setRestaurantId(RestDAO.getRestaurantFromUserId(id).getRestId());
+				user.setRestaurantId(DAOFactory.getInstance().getRestDAO().getRestaurantFromUserId(id).getRestId());
 			}
 		} catch (SQLException e) {
 			throw new DatabaseException("Error while findByUserId", e);

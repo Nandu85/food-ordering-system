@@ -5,7 +5,7 @@ import java.io.InputStream;
 import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.category.SubCategory;
 import com.narola.fooddelivery.category.SubCategoryDAO;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 import com.narola.fooddelivery.restaurants.Restaurant;
 
 public class Dish {
@@ -124,7 +124,7 @@ public class Dish {
 
 	public Restaurant getRestaurant() {
 		if (restaurant == null)
-			return RestDAO.getRestaurantFromId(restaurantId);
+			return DAOFactory.getInstance().getRestDAO().getRestaurantFromId(restaurantId);
 		return restaurant;
 	}
 

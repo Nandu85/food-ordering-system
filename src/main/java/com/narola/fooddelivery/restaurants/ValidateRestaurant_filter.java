@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.URLConstantAdmin;
 import com.narola.fooddelivery.URLConstantOfServlet;
 
@@ -48,7 +49,7 @@ public class ValidateRestaurant_filter implements Filter {
         		}
         			
         		else if(req.getRequestURI().contains(URLConstantOfServlet.UPDATERESTAURANT)) {
-        			req.setAttribute("Restaurant", RestDAO.getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
+        			req.setAttribute("Restaurant", DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(request.getParameter("RestaurantId"))));
         			req.getRequestDispatcher(URLConstantAdmin.UPDATERESTAURANT_JSP).include(req, response);
         		}
         			

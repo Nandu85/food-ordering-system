@@ -17,14 +17,14 @@ import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.DishException;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.restaurants.RestDAO;
+import com.narola.fooddelivery.restaurants.RestDAOMYSQL;
 
 
 public class AddDishesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+		req.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 
 		req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());;
 		getServletContext().getRequestDispatcher(URLConstantAdmin.ADDDISH_JSP).forward(req, resp);
@@ -48,7 +48,7 @@ public class AddDishesServlet extends HttpServlet {
 		} catch (DishException e) {
 			request.setAttribute("categories", DAOFactory.getInstance().getDishDAO().getCategories());
 			request.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
-			request.setAttribute("Restaurants", RestDAO.getAllRestaurants());
+			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 			request.setAttribute("errMsg", e.getMessage());
 			doGet(request, response);
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(URLConstantAdmin.ADDDISH_JSP);
