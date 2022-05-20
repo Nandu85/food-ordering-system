@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.user.User;
+import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 /**
  * Servlet implementation class AddtoCartServlet

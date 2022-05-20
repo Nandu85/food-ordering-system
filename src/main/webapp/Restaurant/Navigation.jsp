@@ -1,8 +1,8 @@
 <%@page import="com.narola.fooddelivery.URLConstant_Restaurant"%>
-<%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
+<%@page import="com.narola.fooddelivery.utility.URLConstantAdmin"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
+<%@page import="com.narola.fooddelivery.utility.URLConstantAdmin"%>
 <%@page import="com.narola.fooddelivery.user.User"%>
 <%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
 

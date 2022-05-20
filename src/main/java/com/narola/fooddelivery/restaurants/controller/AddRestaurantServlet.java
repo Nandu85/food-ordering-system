@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.narola.fooddelivery.ServiceFactory;
-import com.narola.fooddelivery.URLConstantAdmin;
-import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
 import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 import com.narola.fooddelivery.user.User;
+import com.narola.fooddelivery.utility.ServiceFactory;
+import com.narola.fooddelivery.utility.URLConstantAdmin;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 /**
  * Servlet implementation class AddRestaurant_servlet

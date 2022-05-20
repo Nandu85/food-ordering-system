@@ -21,13 +21,13 @@ import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.narola.fooddelivery.Constant;
-import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
 import com.narola.fooddelivery.order.OrderException;
 import com.narola.fooddelivery.user.User;
 import com.narola.fooddelivery.user.UserDAO;
+import com.narola.fooddelivery.utility.Constant;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 /**
  * Servlet implementation class TransactionSuccessServlet

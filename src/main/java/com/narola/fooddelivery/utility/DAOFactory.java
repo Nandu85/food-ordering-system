@@ -1,8 +1,9 @@
-package com.narola.fooddelivery;
+package com.narola.fooddelivery.utility;
 
 import com.narola.fooddelivery.dishes.dao.DishDAOMYSQL;
 import com.narola.fooddelivery.dishes.dao.DishDAOPostGRESQL;
 import com.narola.fooddelivery.dishes.dao.IDishDAO;
+import com.narola.fooddelivery.exception.DatabaseException;
 import com.narola.fooddelivery.restaurants.dao.IRestDAO;
 import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
 import com.narola.fooddelivery.restaurants.dao.RestDAOPOSTGRESQL;
@@ -12,7 +13,7 @@ public class DAOFactory {
 	public static String MYSQL = "MYSQL";
 	public static String POSTGRESQL = "POSTGRESQL";
 	public static String database = null;
-	
+
 	public static IDishDAO dishDAO = null;
 	public static IRestDAO restDAO = null;
 
@@ -24,8 +25,8 @@ public class DAOFactory {
 	}
 
 	public IRestDAO getRestDAO() {
-		if(restDAO==null) {
-			if(database.equals(MYSQL)) {
+		if (restDAO == null) {
+			if (database.equals(MYSQL)) {
 				restDAO = new RestDAOMYSQL();
 			} else if (database.equals(POSTGRESQL)) {
 				restDAO = new RestDAOPOSTGRESQL();
@@ -35,8 +36,8 @@ public class DAOFactory {
 	}
 
 	public IDishDAO getDishDAO() {
-		if(dishDAO==null) {
-			if(database.equals(MYSQL)) {
+		if (dishDAO == null) {
+			if (database.equals(MYSQL)) {
 				dishDAO = new DishDAOMYSQL();
 			} else if (database.equals(POSTGRESQL)) {
 				dishDAO = new DishDAOPostGRESQL();
@@ -44,19 +45,17 @@ public class DAOFactory {
 		}
 		return dishDAO;
 	}
-	
+
 	public void init(String daoType) throws DatabaseException {
-		if(daoType.equals(MYSQL)) {
-			database=MYSQL;
+		if (daoType.equals(MYSQL)) {
+			database = MYSQL;
 		} else if (daoType.equals(POSTGRESQL)) {
-			database=POSTGRESQL;
+			database = POSTGRESQL;
 		} else {
 			throw new DatabaseException("Type is not supported yet");
 		}
 	}
 
-	
-	
 	// Still getting DAO and initializing them according to database is remaining
 
 }

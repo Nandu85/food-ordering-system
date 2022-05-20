@@ -13,11 +13,11 @@ import java.util.List;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
-import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.DBConnection;
-import com.narola.fooddelivery.DatabaseException;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.model.Dish;
+import com.narola.fooddelivery.exception.DatabaseException;
+import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.DBConnection;
 
 public class DishDAOPostGRESQL implements IDishDAO {
 

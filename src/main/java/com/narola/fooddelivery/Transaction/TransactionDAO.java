@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.narola.fooddelivery.DBConnection;
-import com.narola.fooddelivery.DatabaseException;
+import com.narola.fooddelivery.exception.DatabaseException;
 import com.narola.fooddelivery.user.UserDAO;
+import com.narola.fooddelivery.utility.DBConnection;
 
 public class TransactionDAO {
 	

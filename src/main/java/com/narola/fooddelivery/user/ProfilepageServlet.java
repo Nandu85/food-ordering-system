@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.URLConstantAdmin;
-import com.narola.fooddelivery.URLConstantOfServlet;
-import com.narola.fooddelivery.URLConstantUser;
+import com.narola.fooddelivery.utility.URLConstantAdmin;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
+import com.narola.fooddelivery.utility.URLConstantUser;
 
 /**
  * Servlet implementation class Profilepage_servlet

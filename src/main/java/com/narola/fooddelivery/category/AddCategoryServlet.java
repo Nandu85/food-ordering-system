@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.DatabaseException;
-import com.narola.fooddelivery.URLConstantAdmin;
-import com.narola.fooddelivery.URLConstantOfServlet;
+import com.narola.fooddelivery.exception.DatabaseException;
+import com.narola.fooddelivery.utility.URLConstantAdmin;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 
 @WebServlet("/AddCategory")

@@ -1,4 +1,4 @@
-package com.narola.fooddelivery;
+package com.narola.fooddelivery.utility;
 
 public class URLConstantUser {
 	

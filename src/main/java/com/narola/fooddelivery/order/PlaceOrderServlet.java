@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.Constant;
-import com.narola.fooddelivery.URLConstantOfServlet;
-import com.narola.fooddelivery.URLConstantUser;
 import com.narola.fooddelivery.Cart.Cart;
 import com.narola.fooddelivery.Cart.CartItem;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.paymentgateway.OrderEntity;
 import com.narola.fooddelivery.paymentgateway.RazerPayPaymentGateway;
 import com.narola.fooddelivery.user.User;
+import com.narola.fooddelivery.utility.Constant;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
+import com.narola.fooddelivery.utility.URLConstantUser;
 
 /**
  * Servlet implementation class PlaceOrderServlet

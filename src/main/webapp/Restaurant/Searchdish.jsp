@@ -4,7 +4,7 @@
 <%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
 <%@page import="com.narola.fooddelivery.category.Category"%>
 
-<%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
+<%@page import="com.narola.fooddelivery.utility.URLConstantAdmin"%>
 <%@page import="javax.imageio.ImageIO"%>
 <%@page import="java.io.InputStream"%>
 <%@page import="java.io.*"%>

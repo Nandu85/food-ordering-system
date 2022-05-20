@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import com.narola.fooddelivery.Constant;
-import com.narola.fooddelivery.DAOFactory;
 import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
 import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
+import com.narola.fooddelivery.utility.Constant;
+import com.narola.fooddelivery.utility.DAOFactory;
 
 public class User {
 

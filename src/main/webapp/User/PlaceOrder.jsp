@@ -1,7 +1,7 @@
 <%@page import="javax.print.DocFlavor.READER"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.narola.fooddelivery.URLConstantOfServlet" %>
+<%@page import="com.narola.fooddelivery.utility.URLConstantOfServlet" %>
 <!DOCTYPE html>
 <html>
 <head>

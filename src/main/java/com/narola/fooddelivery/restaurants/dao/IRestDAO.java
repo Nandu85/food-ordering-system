@@ -3,7 +3,7 @@ package com.narola.fooddelivery.restaurants.dao;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.narola.fooddelivery.DatabaseException;
+import com.narola.fooddelivery.exception.DatabaseException;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
 
 public interface IRestDAO {

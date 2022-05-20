@@ -3,7 +3,7 @@
 <%@ page import="java.util.*"%>
 <%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
 <%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
-<%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
+<%@page import="com.narola.fooddelivery.utility.URLConstantAdmin"%>
 <!DOCTYPE html>
 <html>
 <head>

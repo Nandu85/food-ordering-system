@@ -10,15 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.ServiceFactory;
-import com.narola.fooddelivery.URLConstantAdmin;
-import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.DishException;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
 import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
+import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.ServiceFactory;
+import com.narola.fooddelivery.utility.URLConstantAdmin;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 
 public class AddDishesServlet extends HttpServlet {

@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.ServiceFactory;
-import com.narola.fooddelivery.URLConstantUser;
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
 import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
+import com.narola.fooddelivery.utility.ServiceFactory;
+import com.narola.fooddelivery.utility.URLConstantUser;
 
 public class DetailofCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

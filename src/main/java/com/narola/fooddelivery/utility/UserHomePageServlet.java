@@ -1,4 +1,4 @@
-package com.narola.fooddelivery;
+package com.narola.fooddelivery.utility;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,6 +22,7 @@ public class UserHomePageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
@@ -34,9 +35,10 @@ public class UserHomePageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.URLConstantAdmin;
-import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
+import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.URLConstantAdmin;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 /**
  * Servlet implementation class UpdateUser_servlet

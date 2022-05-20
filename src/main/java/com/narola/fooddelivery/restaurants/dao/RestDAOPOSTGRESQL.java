@@ -9,10 +9,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.narola.fooddelivery.DBConnection;
-import com.narola.fooddelivery.DatabaseException;
+import com.narola.fooddelivery.exception.DatabaseException;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
+import com.narola.fooddelivery.utility.DBConnection;
 
 public class RestDAOPOSTGRESQL implements IRestDAO{
 

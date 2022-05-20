@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.URLConstantAdmin;
+import com.narola.fooddelivery.utility.URLConstantAdmin;
 
 /**
  * Servlet implementation class ViewUser_servlet

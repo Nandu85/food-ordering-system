@@ -1,4 +1,4 @@
-package com.narola.fooddelivery;
+package com.narola.fooddelivery.utility;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -3,7 +3,7 @@
 <%@ page import="java.io.*"%>
 <%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
 <%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
-<%@page import="com.narola.fooddelivery.URLConstantAdmin"%>
+<%@page import="com.narola.fooddelivery.utility.URLConstantAdmin"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>

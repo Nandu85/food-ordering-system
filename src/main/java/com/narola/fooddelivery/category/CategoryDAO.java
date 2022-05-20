@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.narola.fooddelivery.DBConnection;
-import com.narola.fooddelivery.DatabaseException;
+import com.narola.fooddelivery.exception.DatabaseException;
+import com.narola.fooddelivery.utility.DBConnection;
 
 public class CategoryDAO {
 

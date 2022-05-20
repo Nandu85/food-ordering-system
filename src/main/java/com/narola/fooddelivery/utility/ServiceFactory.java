@@ -1,4 +1,4 @@
-package com.narola.fooddelivery;
+package com.narola.fooddelivery.utility;
 
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;

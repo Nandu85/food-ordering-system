@@ -416,7 +416,7 @@
     <display-name>DatabaseServlet</display-name>
     <servlet-name>DatabaseServlet</servlet-name>
     <load-on-startup>1</load-on-startup>
-    <servlet-class>com.narola.fooddelivery.DatabaseServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.utility.DatabaseServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DatabaseServlet</servlet-name>

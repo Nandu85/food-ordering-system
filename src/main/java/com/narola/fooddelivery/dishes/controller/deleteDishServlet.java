@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.ServiceFactory;
-import com.narola.fooddelivery.URLConstantOfServlet;
 import com.narola.fooddelivery.dishes.service.IDishService;
 import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
+import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.ServiceFactory;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 /**
  * Servlet implementation class deleteDish

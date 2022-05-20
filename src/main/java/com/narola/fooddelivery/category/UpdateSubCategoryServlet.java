@@ -12,7 +12,7 @@ import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
-import com.narola.fooddelivery.URLConstantOfServlet;
+import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
 /**
  * Servlet implementation class UpdateSubCategoryServlet

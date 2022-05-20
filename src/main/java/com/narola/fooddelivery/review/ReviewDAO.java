@@ -8,13 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.narola.fooddelivery.DAOFactory;
-import com.narola.fooddelivery.DBConnection;
-import com.narola.fooddelivery.DatabaseException;
+import com.narola.fooddelivery.exception.DatabaseException;
 import com.narola.fooddelivery.order.Order;
 import com.narola.fooddelivery.order.OrderDAO;
 import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
+import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.DBConnection;
 
 
 
