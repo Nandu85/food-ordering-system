@@ -149,7 +149,7 @@
 			value = isNaN(value) ? 0 : value;
 			value++;
 			input.value = value;
-			window.location.href = document.getElementById("address").value.slice(0,-13)+"AddtoCart?dishId="
+			window.location.href = document.getElementById("address").value.slice(0,-13)+"UpdateItem?dishId="
 				+ input.id + "&qty=" + input.value;
 		}
 
@@ -160,7 +160,7 @@
 				value = isNaN(value) ? 0 : value;
 				value--;
 				input.value = value;
-				window.location.href = document.getElementById("address").value.slice(0,-13)+"AddtoCart?dishId="
+				window.location.href = document.getElementById("address").value.slice(0,-13)+"UpdateItem?dishId="
 					+ input.id + "&qty=" + input.value;
 			}
 		}

@@ -13,8 +13,8 @@ public class DAOFactory {
 	public static String POSTGRESQL = "POSTGRESQL";
 	public static String database = null;
 	
-	public IDishDAO dishDAO = null;
-	public IRestDAO restDAO = null;
+	public static IDishDAO dishDAO = null;
+	public static IRestDAO restDAO = null;
 
 	public static DAOFactory getInstance() {
 		if (DAO_HELPER == null) {
