@@ -1,22 +1,14 @@
 package com.narola.fooddelivery.dishes.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
-import com.narola.fooddelivery.category.CategoryDAO;
-import com.narola.fooddelivery.category.SubCategoryDAO;
 import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.dishes.service.IDishService;
-import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.restaurants.dao.RestDAOMYSQL;
-import com.narola.fooddelivery.utility.DAOFactory;
 import com.narola.fooddelivery.utility.ServiceFactory;
 import com.narola.fooddelivery.utility.URLConstantAdmin;
 import com.narola.fooddelivery.utility.URLConstantOfServlet;
@@ -28,7 +20,7 @@ public class DishUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
-		
+
 		try {
 			String did = request.getParameter("DishId");
 			String dname = request.getParameter("DishName");
@@ -57,29 +49,22 @@ public class DishUpdateServlet extends HttpServlet {
 
 		} catch (Exception e2) {
 			e2.printStackTrace();
-			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
-			request.setAttribute("Dish",
-					DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(request.getParameter("DishId"))));
-			request.setAttribute("categories", DAOFactory.getInstance().getDishDAO().getCategories());
-			request.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
-
 			request.setAttribute("errMsg", e2.getMessage());
-			RequestDispatcher dispatcher = request.getRequestDispatcher(URLConstantAdmin.UPDATEDISH_JSP);
-			dispatcher.forward(request, response);
+			doGet(request, response);
+
 		}
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String str = URLConstantAdmin.UPDATEDISH_JSP + "?DishId=" + String.valueOf(req.getParameter("DishId"));
-		req.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
-		req.setAttribute("SubCategories", SubCategoryDAO.getAllSubCategories());
+		DishServletRequest reqObject = new DishServletRequest();
+		req.setAttribute("Restaurants", reqObject.getRestaurants());
+		req.setAttribute("SubCategories", reqObject.getSubCategories());
 
-		req.setAttribute("categories", CategoryDAO.getAllCategories());
-		req.setAttribute("Dish",
-				DAOFactory.getInstance().getDishDAO().DishFromId(Integer.parseInt(req.getParameter("DishId"))));
-		// req.setAttribute("categoryOfDish",
-		// DishDAO.CategoryFromId(DishDAO.DishFromId(Integer.parseInt(req.getParameter("DishId"))).getCategoryId()));
+		req.setAttribute("categories", reqObject.getCategories());
+		req.setAttribute("Dish", reqObject.getDish(Integer.parseInt(req.getParameter("DishId"))));
+
 		getServletContext().getRequestDispatcher(str).forward(req, resp);
 
 	}

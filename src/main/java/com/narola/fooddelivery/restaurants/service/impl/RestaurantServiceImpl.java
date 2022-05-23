@@ -17,6 +17,7 @@ import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
+import com.narola.fooddelivery.utility.Constant;
 import com.narola.fooddelivery.utility.DAOFactory;
 
 public class RestaurantServiceImpl implements IRestaurantService {
@@ -33,20 +34,20 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			restaurant.setRestphotoAsBase64(imageAsBase64);
 			DAOFactory.getInstance().getRestDAO().addRestaurant(restaurant);
 		} catch (IOException e) {
-			throw new ApplicationException("Oops Something went wrong...");
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG);
 		}
 	}
 
-	public HttpServletRequest searchRestaurants(HttpServletRequest request, String restaurantName, String area) {
+	public List<Restaurant> searchRestaurants(String restaurantName, String area) {
+		List<Restaurant> restaurants = null;
 		if (!restaurantName.equals(""))
-			request.setAttribute("Restaurants",
-					DAOFactory.getInstance().getRestDAO().searchRestaurantFromName(restaurantName));
+			restaurants= DAOFactory.getInstance().getRestDAO().searchRestaurantFromName(restaurantName);
 		else if (!area.equals(""))
-			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().searchRestaurantFromArea(area));
+			restaurants = DAOFactory.getInstance().getRestDAO().searchRestaurantFromArea(area);
 		else
-			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
-		request.setAttribute("Areas", LocationDAO.getAreas());
-		return request;
+			restaurants= DAOFactory.getInstance().getRestDAO().getAllRestaurants();
+		
+		return restaurants;
 	}
 
 	public void updateRestaurant(Location location, Part restImage,String restaurantName,String email,String restaurantId,int disableFlag) {
@@ -72,7 +73,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			DAOFactory.getInstance().getRestDAO().updateRestaurant(restaurant);
 			
 		} catch (IOException e) {
-			throw new ApplicationException("Oops Something went wrong...");
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG);
 		}
 	}
 	
@@ -86,5 +87,13 @@ public class RestaurantServiceImpl implements IRestaurantService {
 	
 	public Restaurant getRestaurantFromId(String restaurantId) {
 		 return DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(restaurantId));
+	}
+	
+	public List<Restaurant> getRestaurants() {
+		 return DAOFactory.getInstance().getRestDAO().getAllRestaurants();
+	}
+	
+	public List<String> getAreas() {
+		 return LocationDAO.getAreas();
 	}
 }

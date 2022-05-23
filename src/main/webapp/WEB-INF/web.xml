@@ -64,11 +64,11 @@
   <servlet>
     <description></description>
     <display-name>deleteDish</display-name>
-    <servlet-name>deleteDishServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.dishes.controller.deleteDishServlet</servlet-class>
+    <servlet-name>DeleteDishServlet</servlet-name>
+    <servlet-class>com.narola.fooddelivery.dishes.controller.DeleteDishServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>deleteDishServlet</servlet-name>
+    <servlet-name>DeleteDishServlet</servlet-name>
     <url-pattern>/deleteDish</url-pattern>
   </servlet-mapping>
   <servlet>

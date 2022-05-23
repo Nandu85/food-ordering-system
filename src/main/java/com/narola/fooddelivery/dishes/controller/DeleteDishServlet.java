@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.dishes.DishException;
 import com.narola.fooddelivery.dishes.service.IDishService;
-import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.utility.DAOFactory;
+import com.narola.fooddelivery.utility.Constant;
 import com.narola.fooddelivery.utility.ServiceFactory;
 import com.narola.fooddelivery.utility.URLConstantOfServlet;
 
@@ -20,6 +19,7 @@ import com.narola.fooddelivery.utility.URLConstantOfServlet;
 public class DeleteDishServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -32,7 +32,11 @@ public class DeleteDishServlet extends HttpServlet {
 
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHDISH_WITH_NO_FILTER);
 		} catch (IOException e) {
-			new DishException("Something ");
+			try {
+				throw new DishException(Constant.ERR_SOMETHING_WRONG);
+			} catch (DishException e1) {
+				e1.printStackTrace();
+			}
 		}
 
 	}

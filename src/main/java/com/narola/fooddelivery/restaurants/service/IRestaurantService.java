@@ -13,7 +13,7 @@ public interface IRestaurantService {
 
 	public void addRestaurant(Location location, Part part, Restaurant restaurant);
 	
-	public HttpServletRequest searchRestaurants(HttpServletRequest request, String restaurantName, String area);
+	public List<Restaurant> searchRestaurants(String restaurantName, String area);
 	
 	public void updateRestaurant(Location location, Part restImage,String restaurantName,String email,String restaurantId,int disableFlag);
 	
@@ -22,4 +22,8 @@ public interface IRestaurantService {
 	public List<Restaurant> getRestaurantFromSubCategory(String subCatId);
 	
 	public Restaurant getRestaurantFromId(String restaurantId);
+	
+	public List<Restaurant> getRestaurants();
+	
+	public List<String> getAreas();
 }

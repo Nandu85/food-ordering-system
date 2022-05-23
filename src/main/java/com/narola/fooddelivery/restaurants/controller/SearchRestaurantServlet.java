@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
-import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 import com.narola.fooddelivery.user.User;
-import com.narola.fooddelivery.utility.DAOFactory;
 import com.narola.fooddelivery.utility.ServiceFactory;
 import com.narola.fooddelivery.utility.URLConstantAdmin;
 import com.narola.fooddelivery.utility.URLConstantUser;
@@ -22,9 +20,9 @@ public class SearchRestaurantServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
-		request.setAttribute("Areas", LocationDAO.getAreas());
+		IRestaurantService service = ServiceFactory.getInstance().getRestaurantService();
+		request.setAttribute("Restaurants", service.getRestaurants());
+		request.setAttribute("Areas", service.getAreas());
 		User user = (User) request.getSession().getAttribute("user");
 		if (user != null) {
 			int usertype = user.getAdmin();
@@ -47,8 +45,8 @@ public class SearchRestaurantServlet extends HttpServlet {
 		String area = request.getParameter("Area");
 
 		IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
-		restService.searchRestaurants(request, restaurantName, area);
-		
+		restService.searchRestaurants(restaurantName, area);
+		request.setAttribute("Areas", restService.getAreas());
 		User user = (User) request.getSession().getAttribute("user");
 		int usertype = user.getAdmin();
 		if (usertype == 1 || usertype == 2)
