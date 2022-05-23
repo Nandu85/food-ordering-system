@@ -28,7 +28,7 @@ public class DishUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
-
+		
 		try {
 			String did = request.getParameter("DishId");
 			String dname = request.getParameter("DishName");
@@ -56,7 +56,6 @@ public class DishUpdateServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHDISH_WITH_NO_FILTER);
 
 		} catch (Exception e2) {
-
 			e2.printStackTrace();
 			request.setAttribute("Restaurants", DAOFactory.getInstance().getRestDAO().getAllRestaurants());
 			request.setAttribute("Dish",
@@ -68,7 +67,6 @@ public class DishUpdateServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(URLConstantAdmin.UPDATEDISH_JSP);
 			dispatcher.forward(request, response);
 		}
-
 	}
 
 	@Override

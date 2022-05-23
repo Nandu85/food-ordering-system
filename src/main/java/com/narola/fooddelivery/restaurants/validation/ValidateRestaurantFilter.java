@@ -18,9 +18,9 @@ import com.narola.fooddelivery.utility.URLConstantOfServlet;
 /**
  * Servlet Filter implementation class ValidateRestaurant_filter
  */
-public class ValidateRestaurant_filter implements Filter {
+public class ValidateRestaurantFilter implements Filter {
 
-    public ValidateRestaurant_filter() {}
+    public ValidateRestaurantFilter() {}
     
     public void destroy() {}
     

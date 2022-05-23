@@ -23,7 +23,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
 
 	public void addRestaurant(Location location, Part part, Restaurant restaurant) {
 		InputStream is;
-		try {
+		try {			
 			LocationDAO.addLocation(location);
 			is = part.getInputStream();
 			byte[] bytes = new byte[is.available()];

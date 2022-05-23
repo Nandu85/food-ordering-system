@@ -89,7 +89,6 @@ public class DishServiceImpl implements IDishService {
 		}
 		request.setAttribute("dishList", dl);
 		request.setAttribute("categories", CategoryDAO.getAllCategories());
-
 		User sessionUser = (User) request.getSession().getAttribute("user");
 		if (sessionUser.getAdmin() == 3 && sessionUser.getRestaurantId() != 0) {
 			int restId = sessionUser.getRestaurantId();
@@ -100,7 +99,6 @@ public class DishServiceImpl implements IDishService {
 			}
 			request.setAttribute("dishList", dlForRest);
 		}
-
 		return request;
 	}
 

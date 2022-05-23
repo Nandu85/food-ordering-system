@@ -245,6 +245,7 @@ public class DishDAOMYSQL implements IDishDAO {
 
 	}
 
+	
 	public Dish DishFromId(int id) throws IOException {
 		Connection con = DBConnection.getInstance().getConnection();
 		PreparedStatement ps = null;
@@ -268,7 +269,7 @@ public class DishDAOMYSQL implements IDishDAO {
 				IOUtils.readFully(is, imageBytes);
 				String base64 = Base64.getEncoder().encodeToString(imageBytes);// Base64encodeToString(imageBytes);
 				d.setPhotoAsBase64(base64);
-//				System.out.println(d.getPhotoAsBase64()+" Main");
+
 
 			}
 			d.setRestId(rs.getInt("Restaurant"));

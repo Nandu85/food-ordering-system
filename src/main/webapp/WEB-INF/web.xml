@@ -143,23 +143,23 @@
   </servlet-mapping>
   <filter>
     <display-name>validateDish</display-name>
-    <filter-name>validateDish_filter</filter-name>
-    <filter-class>com.narola.fooddelivery.dishes.validation.validateDish_filter</filter-class>
+    <filter-name>ValidateDishFilter</filter-name>
+    <filter-class>com.narola.fooddelivery.dishes.validation.ValidateDishFilter</filter-class>
   </filter>
   
   <filter-mapping>
-    <filter-name>validateDish_filter</filter-name>
+    <filter-name>ValidateDishFilter</filter-name>
     <servlet-name>AddDishesServlet</servlet-name>
   </filter-mapping>
   <filter-mapping>
-    <filter-name>validateDish_filter</filter-name>
+    <filter-name>ValidateDishFilter</filter-name>
     <servlet-name>DishUpdateServlet</servlet-name>
   </filter-mapping>
   <filter>
     <description></description>
-    <display-name>ValidateRestaurant_filter</display-name>
-    <filter-name>ValidateRestaurant_filter</filter-name>
-    <filter-class>com.narola.fooddelivery.restaurants.validation.ValidateRestaurant_filter</filter-class>
+    <display-name>ValidateRestaurantFilter</display-name>
+    <filter-name>ValidateRestaurantFilter</filter-name>
+    <filter-class>com.narola.fooddelivery.restaurants.validation.ValidateRestaurantFilter</filter-class>
   </filter>
   <filter>
     <description></description>
@@ -168,7 +168,7 @@
     <filter-class>com.narola.fooddelivery.location.ValidateLocation_filter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>ValidateRestaurant_filter</filter-name>
+    <filter-name>ValidateRestaurantFilter</filter-name>
     <servlet-name>AddRestaurantServlet</servlet-name>
   </filter-mapping>
   <filter-mapping>
@@ -176,7 +176,7 @@
     <servlet-name>AddRestaurantServlet</servlet-name>
   </filter-mapping>
   <filter-mapping>
-    <filter-name>ValidateRestaurant_filter</filter-name>
+    <filter-name>ValidateRestaurantFilter</filter-name>
     <servlet-name>UpdateRestaurantServlet</servlet-name>
   </filter-mapping>
   <filter-mapping>
