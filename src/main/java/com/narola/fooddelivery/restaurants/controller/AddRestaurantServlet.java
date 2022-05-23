@@ -66,8 +66,6 @@ public class AddRestaurantServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHRESTAURANT);
 
 		} catch (Exception e) {
-
-			e.printStackTrace();
 			request.setAttribute("ErrMsg", e.getMessage());
 			getServletContext().getRequestDispatcher(URLConstantAdmin.ADDRESTAURANT_JSP).include(request, response);
 

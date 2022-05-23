@@ -17,6 +17,7 @@ import com.narola.fooddelivery.location.Location;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
+import com.narola.fooddelivery.utility.Constant;
 import com.narola.fooddelivery.utility.DAOFactory;
 
 public class RestaurantServiceImpl implements IRestaurantService {
@@ -33,7 +34,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			restaurant.setRestphotoAsBase64(imageAsBase64);
 			DAOFactory.getInstance().getRestDAO().addRestaurant(restaurant);
 		} catch (IOException e) {
-			throw new ApplicationException("Oops Something went wrong...");
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG);
 		}
 	}
 
@@ -72,7 +73,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			DAOFactory.getInstance().getRestDAO().updateRestaurant(restaurant);
 			
 		} catch (IOException e) {
-			throw new ApplicationException("Oops Something went wrong...");
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG);
 		}
 	}
 	
@@ -86,5 +87,13 @@ public class RestaurantServiceImpl implements IRestaurantService {
 	
 	public Restaurant getRestaurantFromId(String restaurantId) {
 		 return DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(restaurantId));
+	}
+	
+	public List<Restaurant> getRestaurants() {
+		 return DAOFactory.getInstance().getRestDAO().getAllRestaurants();
+	}
+	
+	public List<String> getAreas() {
+		 return LocationDAO.getAreas();
 	}
 }

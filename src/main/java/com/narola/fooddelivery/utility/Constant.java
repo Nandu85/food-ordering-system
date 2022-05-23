@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Constant {
-
+	
+	public static final String ERR_SOMETHING_WRONG="Oops, Something went Wrong..";
+	
 	public static final int DISH_TYPE_VEG = 0;
 	public static final int DISH_TYPE_NON_VEG = 1;
 	public static final int ADMIN_SUPERADMIN = 1;
@@ -17,7 +19,6 @@ public class Constant {
 	public static final int PAYMENT_PENDING=2;
 	public static final int PAYMENT_SUCCESS=1;
 	
-//	public static final int ORDER_UNPAID=0;
 	public static final int ORDER_NEW=1;
 	public static final int ORDER_ACCEPTED=2;
 	public static final int ORDER_PREPARING=3;

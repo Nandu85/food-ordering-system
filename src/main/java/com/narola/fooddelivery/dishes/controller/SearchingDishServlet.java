@@ -9,11 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.category.CategoryDAO;
+import com.narola.fooddelivery.dishes.model.Dish;
 import com.narola.fooddelivery.dishes.service.IDishService;
-import com.narola.fooddelivery.dishes.service.impl.DishServiceImpl;
-import com.narola.fooddelivery.user.User;
-import com.narola.fooddelivery.utility.DAOFactory;
 import com.narola.fooddelivery.utility.ServiceFactory;
 import com.narola.fooddelivery.utility.URLConstantAdmin;
 
@@ -34,12 +31,14 @@ public class SearchingDishServlet extends HttpServlet {
 		try {
 			
 			IDishService dishService = ServiceFactory.getInstance().getDishService();
-			request=dishService.searchDish(request, response, dname, category, dtype, isFilter);
-			
+			List<Dish> dishList=dishService.searchDish(request, response, dname, category, dtype, isFilter);
+			request.setAttribute("dishList", dishList);
+			request.setAttribute("categories", dishService.getCategories());
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(URLConstantAdmin.SEARCHDISH_JSP);
 			dispatcher.forward(request, response);
 		} catch (Exception e2) {
 			e2.printStackTrace();
+			
 		}
 	}
 

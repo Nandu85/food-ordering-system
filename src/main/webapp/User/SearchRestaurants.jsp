@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="com.narola.fooddelivery.utility.URLConstantUser"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
 <%@page import="java.util.Iterator"%>
@@ -111,7 +112,7 @@
 									
 								<br>
 								<%-- <c:forEach items="${rest.getCategories()}" var="cat"> --%>
-								<%ArrayList<String> cat=rest.getCategories();
+								<%List<String> cat=rest.getCategories();
 									Iterator itr1=cat.iterator();
 									while(itr1.hasNext())
 									{

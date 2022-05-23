@@ -22,4 +22,8 @@ public interface IRestaurantService {
 	public List<Restaurant> getRestaurantFromSubCategory(String subCatId);
 	
 	public Restaurant getRestaurantFromId(String restaurantId);
+	
+	public List<Restaurant> getRestaurants();
+	
+	public List<String> getAreas();
 }
