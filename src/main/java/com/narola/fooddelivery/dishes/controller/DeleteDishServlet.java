@@ -22,21 +22,16 @@ public class DeleteDishServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		try {
-			String did = request.getParameter("DishId");
+			String dishId = request.getParameter("DishId");
 
 			IDishService dishService = ServiceFactory.getInstance().getDishService();
 
-			dishService.deleteDish(did);
+			dishService.deleteDish(dishId);
 
 			response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHDISH_WITH_NO_FILTER);
 		} catch (IOException e) {
-			try {
-				throw new DishException(Constant.ERR_SOMETHING_WRONG);
-			} catch (DishException e1) {
-				e1.printStackTrace();
-			}
+			throw new DishException(Constant.ERR_SOMETHING_WRONG);
 		}
 
 	}

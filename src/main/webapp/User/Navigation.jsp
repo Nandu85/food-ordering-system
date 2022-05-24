@@ -4,13 +4,13 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.narola.fooddelivery.utility.URLConstantUser"%>
 <%@page import="com.narola.fooddelivery.user.User"%>
-<%@ page import="com.narola.fooddelivery.Cart.Cart"%>
+<%@page import="com.narola.fooddelivery.cart.Cart"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 User user = ((User) request.getSession().getAttribute("user"));
 Cart cart= (Cart)request.getSession().getAttribute("Cart");
-request.getSession().setAttribute("url", request.getQueryString());
+
 
 %>
 

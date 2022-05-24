@@ -43,6 +43,4 @@ public class DAOFactory {
 		}
 	}
 
-	// Still getting DAO and initializing them according to database is remaining
-
 }

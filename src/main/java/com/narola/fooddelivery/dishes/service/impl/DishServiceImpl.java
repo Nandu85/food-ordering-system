@@ -75,7 +75,7 @@ public class DishServiceImpl implements IDishService {
 			}
 
 			User sessionUser = (User) request.getSession().getAttribute("user");
-			if (sessionUser.getAdmin() == 3 && sessionUser.getRestaurantId() != 0) {
+			if (sessionUser.getAdmin() == Constant.ADMIN_RESTAURANTADMIN && sessionUser.getRestaurantId() != 0) {
 				int restId = sessionUser.getRestaurantId();
 				List<Dish> dlForRest = new ArrayList<>();
 				for (Dish dish : dl) {

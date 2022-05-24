@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
 import com.narola.fooddelivery.user.User;
+import com.narola.fooddelivery.utility.Constant;
 import com.narola.fooddelivery.utility.ServiceFactory;
 import com.narola.fooddelivery.utility.URLConstantAdmin;
 import com.narola.fooddelivery.utility.URLConstantUser;
@@ -43,9 +44,13 @@ public class SearchRestaurantServlet extends HttpServlet {
 		String restaurantName = request.getParameter("RestaurantName");
 		String area = request.getParameter("Area");
 
-		IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
-		restService.searchRestaurants(restaurantName, area);
-		request.setAttribute("Areas", restService.getAreas());
+		try {
+			IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
+			restService.searchRestaurants(restaurantName, area);
+			request.setAttribute("Areas", restService.getAreas());
+		} catch (Exception e) {
+			request.setAttribute("errMsg", Constant.ERR_SOMETHING_WRONG);
+		}
 		User user = (User) request.getSession().getAttribute("user");
 		int usertype = user.getAdmin();
 		if (usertype == 1 || usertype == 2)

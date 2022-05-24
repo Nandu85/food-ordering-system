@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.Cart;
+package com.narola.fooddelivery.cart;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -18,6 +18,7 @@ public class CheckoutServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getRequestURI().contains(URLConstantOfServlet.CHECKOUT))
 			request.getServletContext().getRequestDispatcher(URLConstantUser.CART_JSP).forward(request, response);
@@ -27,8 +28,8 @@ public class CheckoutServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

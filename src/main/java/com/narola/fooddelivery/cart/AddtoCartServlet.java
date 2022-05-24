@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.Cart;
+package com.narola.fooddelivery.cart;
 
 import java.io.IOException;
 
@@ -18,9 +18,7 @@ import com.narola.fooddelivery.utility.URLConstantOfServlet;
 public class AddtoCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String dishId=request.getParameter("dishId");
 		String qty=request.getParameter("qty");
@@ -35,7 +33,6 @@ public class AddtoCartServlet extends HttpServlet {
 			cart=(Cart) session.getAttribute("Cart");
 			User user=(User) session.getAttribute("user");
 			if(user!=null && (cart.getUser()==null || cart.getUser().getUserId()!=user.getUserId())) {
-				
 				cart.setUser(user);
 				CartDAO.SetCartUser(cart);
 			}
@@ -55,11 +52,8 @@ public class AddtoCartServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+URLConstantOfServlet.CHECKOUT);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

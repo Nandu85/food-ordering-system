@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.narola.fooddelivery.Cart.CartDAO;
+import com.narola.fooddelivery.cart.CartDAO;
 import com.narola.fooddelivery.utility.URLConstantAdmin;
 import com.narola.fooddelivery.utility.URLConstantUser;
 

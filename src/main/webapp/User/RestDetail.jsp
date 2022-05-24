@@ -1,10 +1,10 @@
-<%@page import="com.narola.fooddelivery.Cart.CartItem"%>
+<%@page import="com.narola.fooddelivery.cart.CartItem"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*"%>
 <%@page import="com.narola.fooddelivery.dishes.model.Dish"%>
 <%@page import="com.narola.fooddelivery.restaurants.model.Restaurant"%>
-<%@page import="com.narola.fooddelivery.Cart.Cart"%>
+<%@page import="com.narola.fooddelivery.cart.Cart"%>
 <%@page import="com.narola.fooddelivery.utility.URLConstantUser"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>

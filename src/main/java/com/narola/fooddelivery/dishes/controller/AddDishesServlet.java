@@ -31,22 +31,22 @@ public class AddDishesServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		try {
-			String dname = request.getParameter("DishName");
+			String dishName = request.getParameter("DishName");
 			String price = request.getParameter("Price");
 			String ingr = request.getParameter("ingrediant");
 			String category = request.getParameter("category");
-			String dtype = request.getParameter("DishType");
+			String dishType = request.getParameter("DishType");
 
 			Part photopart;
 
 			photopart = request.getPart("DishPic");
 
 			Dish dish = new Dish();
-			dish.setDishName(dname);
+			dish.setDishName(dishName);
 			dish.setPrice(Integer.valueOf(price));
 			dish.setIngrident(ingr);
 			dish.setSubcategoryId(Integer.parseInt(category));
-			dish.setDishtype(Integer.parseInt(dtype));
+			dish.setDishtype(Integer.parseInt(dishType));
 			dish.setRestId(Integer.parseInt(request.getParameter("restaurant")));
 
 			IDishService dishService = new DishServiceImpl();

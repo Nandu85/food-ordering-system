@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.narola.fooddelivery.Cart.Cart;
-import com.narola.fooddelivery.Cart.CartDAO;
 import com.narola.fooddelivery.Transaction.TransactionDAO;
+import com.narola.fooddelivery.cart.Cart;
+import com.narola.fooddelivery.cart.CartDAO;
 import com.narola.fooddelivery.exception.DatabaseException;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.user.UserDAO;

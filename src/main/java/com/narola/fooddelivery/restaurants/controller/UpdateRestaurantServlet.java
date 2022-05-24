@@ -22,31 +22,33 @@ import com.narola.fooddelivery.utility.URLConstantOfServlet;
  */
 public class UpdateRestaurantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    String referer=null;
-    
+	static String referer = null;
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		referer=request.getHeader("referer");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		referer = request.getHeader("referer");
 		IRestaurantService service = ServiceFactory.getInstance().getRestaurantService();
 		request.setAttribute("Restaurant", service.getRestaurantFromId(request.getParameter("RestaurantId")));
 		getServletContext().getRequestDispatcher(URLConstantAdmin.UPDATERESTAURANT_JSP).forward(request, response);
 	}
-	
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
-			String restaurantId=request.getParameter("RestaurantId");
-			String restaurantName=request.getParameter("RestName");
-			String email=request.getParameter("email");
-			int disableFlag=request.getParameter("Disable")==null?0:1;
-			
-			String addressline=request.getParameter("addressline");
-			String area=request.getParameter("area");
-			String city=request.getParameter("city");
-			String state=request.getParameter("state");
-			String pincode=request.getParameter("pincode");
-			
+			String restaurantId = request.getParameter("RestaurantId");
+			String restaurantName = request.getParameter("RestName");
+			String email = request.getParameter("email");
+			int disableFlag = request.getParameter("Disable") == null ? 0 : 1;
+
+			String addressline = request.getParameter("addressline");
+			String area = request.getParameter("area");
+			String city = request.getParameter("city");
+			String state = request.getParameter("state");
+			String pincode = request.getParameter("pincode");
+
 			Location location = new Location();
 			location.setAddressLine(addressline);
 			location.setArea(area);
@@ -55,20 +57,20 @@ public class UpdateRestaurantServlet extends HttpServlet {
 			location.setPincode(Integer.parseInt(pincode));
 
 			Part restImage = request.getPart("RestPic");
-			
+
 			IRestaurantService restService = ServiceFactory.getInstance().getRestaurantService();
 			restService.updateRestaurant(location, restImage, restaurantName, email, restaurantId, disableFlag);
-			
-			if(referer!=null)
+
+			if (referer != null)
 				response.sendRedirect(referer);
 			else
-				response.sendRedirect(request.getContextPath()+URLConstantOfServlet.SEARCHRESTAURANT);
-		} catch (NumberFormatException|IOException|ServletException e) {
+				response.sendRedirect(request.getContextPath() + URLConstantOfServlet.SEARCHRESTAURANT);
+		} catch (NumberFormatException | IOException | ServletException e) {
 			e.printStackTrace();
 			request.setAttribute("errMsg", Constant.ERR_SOMETHING_WRONG);
 			doGet(request, response);
 		}
-		
+
 	}
 
 }

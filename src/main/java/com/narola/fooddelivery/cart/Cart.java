@@ -1,4 +1,4 @@
-package com.narola.fooddelivery.Cart;
+package com.narola.fooddelivery.cart;
 
 import java.io.IOException;
 import java.util.ArrayList;

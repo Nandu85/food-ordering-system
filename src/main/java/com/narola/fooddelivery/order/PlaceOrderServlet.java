@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.narola.fooddelivery.Cart.Cart;
-import com.narola.fooddelivery.Cart.CartItem;
+import com.narola.fooddelivery.cart.Cart;
+import com.narola.fooddelivery.cart.CartItem;
 import com.narola.fooddelivery.location.LocationDAO;
 import com.narola.fooddelivery.paymentgateway.OrderEntity;
 import com.narola.fooddelivery.paymentgateway.RazerPayPaymentGateway;

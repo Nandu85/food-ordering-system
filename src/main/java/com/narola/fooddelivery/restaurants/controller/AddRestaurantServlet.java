@@ -13,6 +13,7 @@ import com.narola.fooddelivery.restaurants.model.Restaurant;
 import com.narola.fooddelivery.restaurants.service.IRestaurantService;
 import com.narola.fooddelivery.restaurants.service.impl.RestaurantServiceImpl;
 import com.narola.fooddelivery.user.User;
+import com.narola.fooddelivery.utility.Constant;
 import com.narola.fooddelivery.utility.ServiceFactory;
 import com.narola.fooddelivery.utility.URLConstantAdmin;
 import com.narola.fooddelivery.utility.URLConstantOfServlet;
@@ -29,7 +30,7 @@ public class AddRestaurantServlet extends HttpServlet {
 
 		User user = (User) request.getSession().getAttribute("user");
 		int usertype = user.getAdmin();
-		if (usertype == 1 || usertype == 2)
+		if (usertype == Constant.ADMIN_SUPERADMIN || usertype == Constant.ADMIN_ADMIN)
 			getServletContext().getRequestDispatcher(URLConstantAdmin.ADDRESTAURANT_JSP).forward(request, response);
 	}
 

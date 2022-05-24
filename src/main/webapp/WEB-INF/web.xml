@@ -323,7 +323,7 @@
     <description></description>
     <display-name>AddtoCartServlet</display-name>
     <servlet-name>AddtoCartServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.Cart.AddtoCartServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.cart.AddtoCartServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddtoCartServlet</servlet-name>
@@ -337,7 +337,7 @@
     <description></description>
     <display-name>CheckoutServlet</display-name>
     <servlet-name>CheckoutServlet</servlet-name>
-    <servlet-class>com.narola.fooddelivery.Cart.CheckoutServlet</servlet-class>
+    <servlet-class>com.narola.fooddelivery.cart.CheckoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CheckoutServlet</servlet-name>

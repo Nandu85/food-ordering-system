@@ -25,20 +25,18 @@ public class SearchingDishServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		String isFilter = request.getParameter("isfilter"); 
-		String dname = request.getParameter("DishName");
+		String dishName = request.getParameter("DishName");
 		String category = request.getParameter("category");
-		String dtype = request.getParameter("DishType");
-		try {
-			
+		String dishType = request.getParameter("DishType");
+		try {			
 			IDishService dishService = ServiceFactory.getInstance().getDishService();
-			List<Dish> dishList=dishService.searchDish(request, response, dname, category, dtype, isFilter);
+			List<Dish> dishList=dishService.searchDish(request, response, dishName, category, dishType, isFilter);
 			request.setAttribute("dishList", dishList);
 			request.setAttribute("categories", dishService.getCategories());
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(URLConstantAdmin.SEARCHDISH_JSP);
 			dispatcher.forward(request, response);
 		} catch (Exception e2) {
-			e2.printStackTrace();
-			
+			e2.printStackTrace();	
 		}
 	}
 

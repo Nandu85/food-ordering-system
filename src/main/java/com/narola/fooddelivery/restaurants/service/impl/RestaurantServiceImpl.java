@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -24,7 +23,7 @@ public class RestaurantServiceImpl implements IRestaurantService {
 
 	public void addRestaurant(Location location, Part part, Restaurant restaurant) {
 		InputStream is;
-		try {			
+		try {
 			LocationDAO.addLocation(location);
 			is = part.getInputStream();
 			byte[] bytes = new byte[is.available()];
@@ -34,23 +33,28 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			restaurant.setRestphotoAsBase64(imageAsBase64);
 			DAOFactory.getInstance().getRestDAO().addRestaurant(restaurant);
 		} catch (IOException e) {
-			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG);
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
 		}
 	}
 
 	public List<Restaurant> searchRestaurants(String restaurantName, String area) {
-		List<Restaurant> restaurants = null;
-		if (!restaurantName.equals(""))
-			restaurants= DAOFactory.getInstance().getRestDAO().searchRestaurantFromName(restaurantName);
-		else if (!area.equals(""))
-			restaurants = DAOFactory.getInstance().getRestDAO().searchRestaurantFromArea(area);
-		else
-			restaurants= DAOFactory.getInstance().getRestDAO().getAllRestaurants();
-		
-		return restaurants;
+		try {
+			List<Restaurant> restaurants = null;
+			if (restaurantName != null && !restaurantName.trim().isEmpty())
+				restaurants = DAOFactory.getInstance().getRestDAO().searchRestaurantFromName(restaurantName);
+			else if (area != null && !area.trim().isEmpty())
+				restaurants = DAOFactory.getInstance().getRestDAO().searchRestaurantFromArea(area);
+			else
+				restaurants = DAOFactory.getInstance().getRestDAO().getAllRestaurants();
+
+			return restaurants;
+		} catch (Exception e) {
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
+		}
 	}
 
-	public void updateRestaurant(Location location, Part restImage,String restaurantName,String email,String restaurantId,int disableFlag) {
+	public void updateRestaurant(Location location, Part restImage, String restaurantName, String email,
+			String restaurantId, int disableFlag) {
 		InputStream is;
 		try {
 			LocationDAO.addLocation(location);
@@ -58,10 +62,10 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			byte[] bytes = new byte[is.available()];
 			IOUtils.readFully(is, bytes);
 			String imgToString = Base64.getEncoder().encodeToString(bytes);
-			
+
 			Restaurant restaurant = DAOFactory.getInstance().getRestDAO()
 					.getRestaurantFromId(Integer.parseInt(restaurantId));
-			
+
 			restaurant.setRestName(restaurantName);
 			restaurant.setEmail(email);
 			restaurant.setLocation(location);
@@ -69,31 +73,50 @@ public class RestaurantServiceImpl implements IRestaurantService {
 			if (!imgToString.isEmpty())
 				restaurant.setRestphotoAsBase64(imgToString);
 			restaurant.setDisableFlag(disableFlag);
-			
+
 			DAOFactory.getInstance().getRestDAO().updateRestaurant(restaurant);
-			
 		} catch (IOException e) {
-			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG);
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
 		}
 	}
-	
+
 	public SubCategory getSubCategoryById(String subCatId) {
-		 return SubCategoryDAO.getSubCategoryById(Integer.parseInt(subCatId));
+		try {
+			return SubCategoryDAO.getSubCategoryById(Integer.parseInt(subCatId));
+		} catch (Exception e) {
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
+		}
 	}
-	
-	public List<Restaurant> getRestaurantFromSubCategory(String subCatId){
-		return DAOFactory.getInstance().getRestDAO().getRestaurantsFromSubCategory(Integer.parseInt(subCatId));
+
+	public List<Restaurant> getRestaurantFromSubCategory(String subCatId) {
+		try {
+			return DAOFactory.getInstance().getRestDAO().getRestaurantsFromSubCategory(Integer.parseInt(subCatId));
+		} catch (Exception e) {
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
+		}
 	}
-	
+
 	public Restaurant getRestaurantFromId(String restaurantId) {
-		 return DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(restaurantId));
+		try {
+			return DAOFactory.getInstance().getRestDAO().getRestaurantFromId(Integer.parseInt(restaurantId));
+		} catch (Exception e) {
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
+		}
 	}
-	
+
 	public List<Restaurant> getRestaurants() {
-		 return DAOFactory.getInstance().getRestDAO().getAllRestaurants();
+		try {
+			return DAOFactory.getInstance().getRestDAO().getAllRestaurants();
+		} catch (Exception e) {
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
+		}
 	}
-	
+
 	public List<String> getAreas() {
-		 return LocationDAO.getAreas();
+		try {
+			return LocationDAO.getAreas();
+		} catch (Exception e) {
+			throw new ApplicationException(Constant.ERR_SOMETHING_WRONG, e);
+		}
 	}
 }
